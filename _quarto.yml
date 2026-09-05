@@ -1,0 +1,70 @@
+project:
+  type: book
+
+book:
+  title: "Applied Statistics and Probability for Engineers"
+  author: 
+    - name: Mohammad Saifuddin, Assistant Professor
+      affiliations: 
+        - name: Dept. of Math & Stat (BUBT)
+      #url: https://github.com/Saifuddin86
+  
+  #cover-image: cover.jpg
+
+  
+  
+  chapters:
+    - index.qmd
+    - 1Introduction_to_statistics_1.qmd
+    - 2Probability_2.qmd
+    - 3Random_variable_3.qmd
+    - 4Continuous_rv_5.qmd
+    - 5joint_distribution.qmd
+    - 6Statistical_inference.qmd
+    - 7Linear_regression.qmd
+    - 8MLR.qmd
+    - 9ANOVA_oneway.qmd
+    - summary.qmd
+    - references.qmd
+
+
+downloads: [pdf, epub]
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
+
+
+
+execute: 
+  echo: false
+  warning: false
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+    include-in-header: footer.tex
+    geometry:
+      - top=20mm
+      - bottom=25mm
+      - left=25mm
+      - right=25mm
+      - heightrounded
+    toc: true
+    toc-depth: 2
+    colorlinks: true
+    fontsize: 11pt
+    #include-before-body: cover.tex
+
+editor: visual
