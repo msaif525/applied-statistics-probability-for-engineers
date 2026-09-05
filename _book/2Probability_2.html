@@ -148,6 +148,25 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Applied Statistics and Probability for Engineers</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Applied-Statistics-and-Probability-for-Engineers.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Applied-Statistics-and-Probability-for-Engineers.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -382,7 +401,7 @@ window.Quarto = {
 <section id="conditional-probability" class="level2" data-number="2.11">
 <h2 data-number="2.11" class="anchored" data-anchor-id="conditional-probability"><span class="header-section-number">2.11</span> Conditional Probability</h2>
 <p>The conditional probability of an event <span class="math inline">\(A\)</span>, <em>given</em> an event <span class="math inline">\(B\)</span> with <span class="math inline">\(P(B) &gt; 0\)</span>, is defined by,</p>
-<p><span class="math display">\[P(A|B)=\frac{P(A\cap B)}{P(B)}\]</span> <strong>Example 2.6</strong> <span class="citation" data-cites="walpole2017">(<a href="references.html#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017a</a> , 9th ed., page 63)</span>: Suppose that our sample space <span class="math inline">\(\Omega\)</span> is the population of adults in a small town who have completed the requirements for a college degree. We shall categorize them according to gender and employment status. The data are given in <span class="quarto-unresolved-ref">?tbl-tbl21</span>.</p>
+<p><span class="math display">\[P(A|B)=\frac{P(A\cap B)}{P(B)}\]</span> <strong>Example 2.6</strong> <span class="citation" data-cites="walpole2017">(<a href="#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017a</a> , 9th ed., page 63)</span>: Suppose that our sample space <span class="math inline">\(\Omega\)</span> is the population of adults in a small town who have completed the requirements for a college degree. We shall categorize them according to gender and employment status. The data are given in <a href="#tbl-tbl21" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-tbl21</span></a>.</p>
 <table class="caption-top table">
 <caption>Categorization of the Adults in a Small Town</caption>
 <thead>
@@ -426,7 +445,7 @@ window.Quarto = {
 <p><span class="math display">\[P(A\cap B)=P(A) P(B|A) ; \ \ provided \ \ P(A)&gt;0\]</span></p>
 <p>In general, assuming that all of the conditioning events (let, 3 events) have positive probability, we have</p>
 <p><span class="math display">\[P(A_1\cap A_2\cap A_3)=P(A_1) P(A_2|A_1)P(A_3|A_1\cap A_2)\]</span></p>
-<p><strong>Example 2.7 [<span class="citation" data-cites="walpole2017">Walpole et al. (<a href="references.html#ref-walpole2017" role="doc-biblioref">2017a</a>)</span> ,</strong> Example 2.36<strong>]:</strong> Suppose that we have a fuse box containing 20 fuses, of which 5 are defective. If 2 fuses are selected at random and removed from the box in succession without replacing the first, what is the probability that both fuses are defective?</p>
+<p><strong>Example 2.7 [<span class="citation" data-cites="walpole2017">Walpole et al. (<a href="#ref-walpole2017" role="doc-biblioref">2017a</a>)</span> ,</strong> Example 2.36<strong>]:</strong> Suppose that we have a fuse box containing 20 fuses, of which 5 are defective. If 2 fuses are selected at random and removed from the box in succession without replacing the first, what is the probability that both fuses are defective?</p>
 </section>
 <section id="probability-trees" class="level2" data-number="2.13">
 <h2 data-number="2.13" class="anchored" data-anchor-id="probability-trees"><span class="header-section-number">2.13</span> Probability trees</h2>
@@ -451,8 +470,8 @@ window.Quarto = {
 <p><span class="math inline">\(P(w_2)=P(w_1\cap w_2)+P(b_1\cap w_2)\)</span></p>
 <p><span class="math inline">\(=P(w_1)P(w_2|w_1)+P(b_1)P(w_2|b_1)\)</span></p>
 <p><span class="math inline">\(=(\frac{2}{5})(\frac{1}{4})+(\frac{3}{5})(\frac{2}{4})=\frac{1}{10}+\frac{3}{10}=\frac{4}{10}=\frac{2}{5}\)</span></p>
-<p><strong>*Example 2.9 [<span class="citation" data-cites="walpole2017">Walpole et al. (<a href="references.html#ref-walpole2017" role="doc-biblioref">2017a</a>)</span>,</strong> Example 2.37<strong>]:</strong> One bag contains 4 white balls and 3 black balls, and a second bag contains 3 white balls and 5 black balls. One ball is drawn from the first bag and placed unseen in the second bag. What is the probability that a ball now drawn from the second bag is black? <em>(<strong>Hints:</strong> Apply probability tree)</em></p>
-<p><strong>Example 2.10-Radar Detection</strong> <span class="citation" data-cites="bertsekas2008">(<a href="references.html#ref-bertsekas2008" role="doc-biblioref">Bertsekas and Tsitsiklis 2008</a>)</span> <strong>:</strong> If an aircraft is present in a certain area, radar detects it and generates an alarm signal with probability 0.99. If an aircraft is not present the radar generates a (false) alarm, with probability 0.10. We assume that an aircraft is present with probability 0.05. What is the probability of no aircraft presence and a false alarm? What is the probability of aircraft presence and no detection?</p>
+<p><strong>*Example 2.9 [<span class="citation" data-cites="walpole2017">Walpole et al. (<a href="#ref-walpole2017" role="doc-biblioref">2017a</a>)</span>,</strong> Example 2.37<strong>]:</strong> One bag contains 4 white balls and 3 black balls, and a second bag contains 3 white balls and 5 black balls. One ball is drawn from the first bag and placed unseen in the second bag. What is the probability that a ball now drawn from the second bag is black? <em>(<strong>Hints:</strong> Apply probability tree)</em></p>
+<p><strong>Example 2.10-Radar Detection</strong> <span class="citation" data-cites="bertsekas2008">(<a href="#ref-bertsekas2008" role="doc-biblioref">Bertsekas and Tsitsiklis 2008</a>)</span> <strong>:</strong> If an aircraft is present in a certain area, radar detects it and generates an alarm signal with probability 0.99. If an aircraft is not present the radar generates a (false) alarm, with probability 0.10. We assume that an aircraft is present with probability 0.05. What is the probability of no aircraft presence and a false alarm? What is the probability of aircraft presence and no detection?</p>
 </section>
 <section id="independent-events" class="level2" data-number="2.14">
 <h2 data-number="2.14" class="anchored" data-anchor-id="independent-events"><span class="header-section-number">2.14</span> Independent events</h2>
@@ -466,15 +485,15 @@ window.Quarto = {
 <li><strong>Independence Rule for Multiple events:</strong></li>
 </ul>
 <p><span class="math display">\[P(A\cap B \cap C )=P(A) P(B) P(C) \]</span></p>
-<p><strong>Example 2.11</strong> <span class="citation" data-cites="probabil2017a">(<a href="references.html#ref-probabil2017a" role="doc-biblioref">Walpole et al. 2017b</a>, Exercise 2.89)</span> A town has two fire engines operating independently. The probability that a specific engine is available when needed is 0.96.</p>
+<p><strong>Example 2.11</strong> <span class="citation" data-cites="probabil2017a">(<a href="#ref-probabil2017a" role="doc-biblioref">Walpole et al. 2017b</a>, Exercise 2.89)</span> A town has two fire engines operating independently. The probability that a specific engine is available when needed is 0.96.</p>
 <p>(a) What is the probability that neither is available when needed?</p>
 <p>(b) What is the probability that a fire engine is available when needed?</p>
-<p><strong>Example</strong> <span class="citation" data-cites="lind2012">(<a href="references.html#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012, 182</a>)</span> You take a trip by air that involves three independent flights. If there is an 80 percent chance each specific leg of the trip is done on time, what is the probability all three flights arrive on time?</p>
-<p><strong>Example</strong> <span class="citation" data-cites="lind2012">(<a href="references.html#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012, 182</a>)</span> The probability a HP network server is down is .05. If you have three independent servers, what is the probability that at least one of them is operational?</p>
-<p><strong>Example</strong> <span class="citation" data-cites="lind2012">(<a href="references.html#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012, 182</a>)</span> Twenty-two percent of all liquid crystal displays (LCDs) are manufactured by Samsung. What is the probability that in a collection of three independent LCD purchases, at least one is a Samsung?</p>
+<p><strong>Example</strong> <span class="citation" data-cites="lind2012">(<a href="#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012, 182</a>)</span> You take a trip by air that involves three independent flights. If there is an 80 percent chance each specific leg of the trip is done on time, what is the probability all three flights arrive on time?</p>
+<p><strong>Example</strong> <span class="citation" data-cites="lind2012">(<a href="#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012, 182</a>)</span> The probability a HP network server is down is .05. If you have three independent servers, what is the probability that at least one of them is operational?</p>
+<p><strong>Example</strong> <span class="citation" data-cites="lind2012">(<a href="#ref-lind2012" role="doc-biblioref">Lind, Marchal, and Wathen 2012, 182</a>)</span> Twenty-two percent of all liquid crystal displays (LCDs) are manufactured by Samsung. What is the probability that in a collection of three independent LCD purchases, at least one is a Samsung?</p>
 </section>
 <section id="system-reliability-montgomery2014b-page-38" class="level2" data-number="2.15">
-<h2 data-number="2.15" class="anchored" data-anchor-id="system-reliability-montgomery2014b-page-38"><span class="header-section-number">2.15</span> System Reliability <span class="citation" data-cites="montgomery2014b">(<a href="references.html#ref-montgomery2014b" role="doc-biblioref">Montgomery and Runger 2014, 38</a>)</span></h2>
+<h2 data-number="2.15" class="anchored" data-anchor-id="system-reliability-montgomery2014b-page-38"><span class="header-section-number">2.15</span> System Reliability <span class="citation" data-cites="montgomery2014b">(<a href="#ref-montgomery2014b" role="doc-biblioref">Montgomery and Runger 2014, 38</a>)</span></h2>
 <ul>
 <li><strong>Series circuit:</strong> Suppose component <span class="math inline">\(L\)</span> and <span class="math inline">\(R\)</span> are connected in series from left to right . Also assume <span class="math inline">\(L\)</span> and <span class="math inline">\(R\)</span> operate ( or fail ) independently.</li>
 </ul>
@@ -574,7 +593,7 @@ window.Quarto = {
 </ol>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-bertsekas2008" class="csl-entry" role="listitem">
 Bertsekas, Dimitri P., and John N. Tsitsiklis. 2008. <em>Introduction to probability</em>. 2nd ed. Optimization and computation series. Belmont: Athena scientific.
 </div>

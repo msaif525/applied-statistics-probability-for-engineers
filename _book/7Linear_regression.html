@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -183,6 +148,25 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Applied Statistics and Probability for Engineers</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Applied-Statistics-and-Probability-for-Engineers.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Applied-Statistics-and-Probability-for-Engineers.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -510,31 +494,6 @@ window.Quarto = {
 <p><strong>i)</strong> Here SBP is dependent variable and age is independent variable</p>
 <p><strong>ii) Scatter plot of Age versus SBP</strong></p>
 <div class="cell" data-layout-align="left">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.2.1     ✔ readr     2.2.0
-✔ forcats   1.0.1     ✔ stringr   1.6.0
-✔ ggplot2   4.0.3     ✔ tibble    3.3.1
-✔ lubridate 1.9.5     ✔ tidyr     1.3.2
-✔ purrr     1.2.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>age<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">16</span>,<span class="dv">25</span>,<span class="dv">39</span>,<span class="dv">45</span>,<span class="dv">49</span>,<span class="dv">64</span>,<span class="dv">70</span>,<span class="dv">29</span>,<span class="dv">57</span>,<span class="dv">22</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sbp<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">109</span>,<span class="dv">128</span>,<span class="dv">143</span>,<span class="dv">145</span>,<span class="dv">180</span>,<span class="dv">185</span>,<span class="dv">199</span>,<span class="dv">130</span>,<span class="dv">175</span>,<span class="dv">118</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#length(sbp)</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plot(age,sbp,pch=19)</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(age,sbp),<span class="fu">aes</span>(age,sbp))<span class="sc">+</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">se=</span><span class="cn">FALSE</span>,<span class="at">lwd=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Age (in years)"</span>, <span class="at">y=</span> <span class="st">"SBP (Hg m)"</span>)<span class="sc">+</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-slr" class="quarto-float quarto-figure quarto-figure-left anchored" data-fig-align="left">
 <figure class="quarto-float quarto-float-fig figure">
@@ -559,23 +518,6 @@ Figure&nbsp;7.1: Sacter plot of Age and SBP
 <p><span class="math display">\[s_{xy}=\frac{\sum xy-n \cdot \bar x \cdot \bar y}{n-1}=\frac{67977-10\times 41.6\times 151.2}{10-1}=564.2\]</span></p>
 <p><span class="math display">\[s^2_x=\frac{\sum x^2 -n\times \bar x^2}{n-1}=343.6\]</span></p>
 <p><span class="math display">\[s^2_y=\frac{\sum y^2 -n\times \bar y^2}{n-1}=977.7333\]</span></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sumfun<span class="ot">&lt;-</span><span class="cf">function</span>(x,y){</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  sumX<span class="ot">=</span><span class="fu">sum</span>(x)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  sumY<span class="ot">=</span><span class="fu">sum</span>(y)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  sumXY<span class="ot">=</span><span class="fu">sum</span>(x<span class="sc">*</span>y)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  sumX_sq<span class="ot">=</span><span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  sumY_sq<span class="ot">=</span><span class="fu">sum</span>(y<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>( <span class="st">"SumX="</span>,sumX, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">"SumY="</span>,sumY,<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">"SumXY="</span>,sumXY,<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">"SumX_sq="</span>,sumX_sq,<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">"SumY_sq="</span>,sumY_sq)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#sumfun(age,sbp)</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#cov(age,sbp)</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#var(age);var(sbp)</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#lm(sbp~age)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 <p>Hence,</p>
 <p><span class="math display">\[\hat \beta_1=\frac{s_{xy}}{s^2_x}=\frac{564.2}{343.6}=1.642026\approx 1.642\]</span></p>
 <p>and,</p>
@@ -618,7 +560,7 @@ Figure&nbsp;7.1: Sacter plot of Age and SBP
 <h3 data-number="7.2.3" class="anchored" data-anchor-id="scatter-plot-graphical-method-to-explore-correlation"><span class="header-section-number">7.2.3</span> Scatter plot: Graphical method to explore correlation</h3>
 <p>A <strong>scatter plot</strong> shows the relationship between two quantitative variables measured for the same individuals. The values of one variable appear on the horizontal axis, and the values of the other variable appear on the vertical axis. Each individual in the data appears as a point on the graph.</p>
 <ul>
-<li>A scatterplot <em>displays</em> the strength, direction, and form of the relationship between two quantitative variables (<em>see</em> <a href="#fig-scatter" class="quarto-xref">Figure&nbsp;<span>7.2</span></a>).</li>
+<li>A scatterplot <em>displays</em> the strength, direction, and form of the relationship between two quantitative variables (<em>see</em> <a href="#fig-scatter" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-scatter</span></a>).</li>
 </ul>
 <div id="fig-scatter" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -632,15 +574,6 @@ Figure&nbsp;7.2: Types of correlations that can be represented using a scatter p
 </div>
 <p>Lets draw a scatter plot for the following data.</p>
 <div class="cell" data-tbl-cap-location="top">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">57</span>,<span class="dv">41</span>,<span class="dv">54</span>,<span class="dv">54</span>,<span class="dv">38</span>,<span class="dv">63</span>,<span class="dv">48</span>,<span class="dv">59</span>,<span class="dv">46</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>xy<span class="ot">=</span><span class="fu">data.frame</span>(x,y)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>xy <span class="sc">%&gt;%</span><span class="fu">t</span>() <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()<span class="ot">-&gt;</span>t.xy</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(t.xy)<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#t.xy %&gt;% gt()</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>t.xy <span class="sc">%&gt;%</span>knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-xydata" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-cap-location="top">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-xydata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -699,15 +632,6 @@ Table&nbsp;7.1: Data
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(xy,<span class="fu">aes</span>(x,y))<span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Positive correlation exists between X and Y"</span>)<span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span> ()<span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">colour =</span> <span class="st">"black"</span>),</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-scatterplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -792,13 +716,7 @@ Figure&nbsp;7.3: Sctter plot between X and Y
 </section>
 <section id="computing-the-coefficient-of-correlation" class="level3" data-number="7.2.6">
 <h3 data-number="7.2.6" class="anchored" data-anchor-id="computing-the-coefficient-of-correlation"><span class="header-section-number">7.2.6</span> Computing the Coefficient of Correlation</h3>
-<p>Let us compute sample correlation coefficient between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> from <a href="#tbl-xydata" class="quarto-xref">Table&nbsp;<span>7.1</span></a>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(x); sum(y)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(x*y)</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(x^2)</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(y^2)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>Let us compute sample correlation coefficient between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> from <a href="#tbl-xydata" class="quarto-xref">Table&nbsp;<span class="quarto-unresolved-ref">tbl-xydata</span></a>.</p>
 <p>Here, <span class="math inline">\(n=10 ; \sum x=30 ; \sum y =510\)</span>.</p>
 <p><span class="math inline">\(\sum xy =x_1y_1+x_2y_2+ \cdot \cdot \cdot+x_ny_n= 1629\)</span></p>
 <p><span class="math inline">\(\sum x^2=2^2+5^2 +...+2^2=110\)</span></p>
@@ -809,9 +727,6 @@ Figure&nbsp;7.3: Sctter plot between X and Y
 <p><span class="math display">\[s_X=\sqrt { \frac{\sum x^2 -n \ \  \bar x^2}{n-1}}=1.490712\]</span></p>
 <p><span class="math display">\[s_Y=\sqrt { \frac{\sum y^2 -n \ \ \bar y^2}{n-1}}=7.930252\]</span></p>
 <p><span class="math display">\[s_{XY}=\frac{\sum xy -n \ \ \bar x \ \ \bar y }{n-1}=11\]</span></p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#$s_X=\sqrt {\frac{1}{n-1} \left[ \sum x^2- \frac{(\sum #x)^2}{n}\right]}$</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 <p>Hence,</p>
 <p><span class="math display">\[r=\frac{s_{XY}}{s_X \times s_Y}=\frac{11}{1.490712\times 7.930252}=0.9305\]</span></p>
 <p>which is close to 1. So the correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is <em>strong</em> and <em>positive</em>.</p>
@@ -820,7 +735,7 @@ Figure&nbsp;7.3: Sctter plot between X and Y
 <h3 data-number="7.2.7" class="anchored" data-anchor-id="exercises-constructing-a-scatter-plot-and-determining-correlation"><span class="header-section-number">7.2.7</span> Exercises: Constructing a Scatter Plot and Determining Correlation</h3>
 <p>In Exercises 1–4, (a) display the data in a scatter plot, (b) calculate the sample correlation coefficient <span class="math inline">\(r\)</span>, and (c) describe the type of correlation and interpret the correlation in the context of the data.</p>
 <ol type="1">
-<li><strong>Age and Blood Pressure.</strong> The ages (in years) of 10 men and their systolic blood pressures (in millimeters of mercury) <span class="citation" data-cites="larson2015">(<a href="references.html#ref-larson2015" role="doc-biblioref">Larson and Farber 2015, 482</a>)</span></li>
+<li><strong>Age and Blood Pressure.</strong> The ages (in years) of 10 men and their systolic blood pressures (in millimeters of mercury) <span class="citation" data-cites="larson2015">(<a href="#ref-larson2015" role="doc-biblioref">Larson and Farber 2015, 482</a>)</span></li>
 </ol>
 <table class="caption-top table">
 <colgroup>
@@ -866,7 +781,7 @@ Figure&nbsp;7.3: Sctter plot between X and Y
 </tbody>
 </table>
 <ol start="2" type="1">
-<li><strong>Driving Speed and Fuel Efficiency.</strong> A department of transportation’s study on driving speed and miles per gallon for midsize automobiles resulted in the following data <span class="citation" data-cites="anderson2020">(<a href="references.html#ref-anderson2020" role="doc-biblioref">Anderson 2020a, 149</a>)</span>:</li>
+<li><strong>Driving Speed and Fuel Efficiency.</strong> A department of transportation’s study on driving speed and miles per gallon for midsize automobiles resulted in the following data <span class="citation" data-cites="anderson2020">(<a href="#ref-anderson2020" role="doc-biblioref">Anderson 2020a, 149</a>)</span>:</li>
 </ol>
 <table class="caption-top table">
 <colgroup>
@@ -912,7 +827,7 @@ Figure&nbsp;7.3: Sctter plot between X and Y
 </tbody>
 </table>
 <ol start="3" type="1">
-<li>Are the marks one receives in a course related to the amount of time spent studying the subject? To analyze this mysterious possibility, a student took a random sample of 10 students who had enrolled in an accounting class last semester. He asked each to report his or her mark in the course and the total number of hours spent studying accounting. These data are listed here <span class="citation" data-cites="keller2014">(<a href="references.html#ref-keller2014" role="doc-biblioref">Keller 2014</a>)</span>.</li>
+<li>Are the marks one receives in a course related to the amount of time spent studying the subject? To analyze this mysterious possibility, a student took a random sample of 10 students who had enrolled in an accounting class last semester. He asked each to report his or her mark in the course and the total number of hours spent studying accounting. These data are listed here <span class="citation" data-cites="keller2014">(<a href="#ref-keller2014" role="doc-biblioref">Keller 2014</a>)</span>.</li>
 </ol>
 <table class="caption-top table">
 <colgroup>
@@ -1021,46 +936,14 @@ Figure&nbsp;7.3: Sctter plot between X and Y
 <h3 data-number="7.2.9" class="anchored" data-anchor-id="correlation-vs.-causation"><span class="header-section-number">7.2.9</span> Correlation vs.&nbsp;causation</h3>
 <p><em>Correlation</em> does not always imply <em>causation</em>. For example,</p>
 <ul>
-<li><p>A study<span class="citation" data-cites="messerli2012">(<a href="references.html#ref-messerli2012" role="doc-biblioref">Messerli 2012</a>)</span> found that there was a significant (<span class="math inline">\(r=0.791\)</span>) positive correlation between <em>chocolate consumption per capita</em> and <em>number of Nobel laureates per 10 million persons</em>. This does not necessarily implies that more a country consumes chocolate, more the chance of getting a Nobel prize. Rather differences in socioeconomic status from country to country and geographic and climatic factors may play some role to win a Nobel prize.</p></li>
-<li><p>We might find that there is a positive correlation between the time spent driving on road and the number of accidents but this does not mean that spending more time on road causes accident.Because in that case, in order to avoid accidents one may drive fast so that time spent on road is less <span class="citation" data-cites="selvamuthu2024">(<a href="references.html#ref-selvamuthu2024" role="doc-biblioref">Selvamuthu and Das 2024</a>)</span>.</p></li>
+<li><p>A study<span class="citation" data-cites="messerli2012">(<a href="#ref-messerli2012" role="doc-biblioref">Messerli 2012</a>)</span> found that there was a significant (<span class="math inline">\(r=0.791\)</span>) positive correlation between <em>chocolate consumption per capita</em> and <em>number of Nobel laureates per 10 million persons</em>. This does not necessarily implies that more a country consumes chocolate, more the chance of getting a Nobel prize. Rather differences in socioeconomic status from country to country and geographic and climatic factors may play some role to win a Nobel prize.</p></li>
+<li><p>We might find that there is a positive correlation between the time spent driving on road and the number of accidents but this does not mean that spending more time on road causes accident.Because in that case, in order to avoid accidents one may drive fast so that time spent on road is less <span class="citation" data-cites="selvamuthu2024">(<a href="#ref-selvamuthu2024" role="doc-biblioref">Selvamuthu and Das 2024</a>)</span>.</p></li>
 </ul>
 </section>
 <section id="effect-of-outlier-on-correlation-coefficient" class="level3" data-number="7.2.10">
 <h3 data-number="7.2.10" class="anchored" data-anchor-id="effect-of-outlier-on-correlation-coefficient"><span class="header-section-number">7.2.10</span> Effect of outlier on correlation coefficient</h3>
-<p>The correlation coefficient is heavily affected by outlier (see <a href="#fig-outlieronr1" class="quarto-xref">Figure&nbsp;<span>7.4</span></a>). It changes the magnitude of the correlation coefficient.</p>
+<p>The correlation coefficient is heavily affected by outlier (see <a href="#fig-outlieronr1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-outlieronr1</span></a>). It changes the magnitude of the correlation coefficient.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate data with a positive correlation</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">50</span>, <span class="dv">0</span>, <span class="dv">10</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">0</span>, <span class="dv">2</span>)  <span class="co"># Linear relationship with some noise</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate correlation without outlier</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>correlation_without_outlier <span class="ot">&lt;-</span> <span class="fu">cor</span>(x, y)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Add an outlier</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>x_outlier <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="dv">15</span>)</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>y_outlier <span class="ot">&lt;-</span> <span class="fu">c</span>(y, <span class="sc">-</span><span class="dv">15</span>)  <span class="co"># Outlier with opposite trend</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate correlation with outlier</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>correlation_with_outlier <span class="ot">&lt;-</span> <span class="fu">cor</span>(x_outlier, y_outlier)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot data</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))  <span class="co"># Arrange plots side-by-side</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot without outlier</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">main=</span><span class="fu">paste</span>(<span class="st">"Without Outlier</span><span class="sc">\n</span><span class="st">Correlation, r ="</span>, <span class="fu">round</span>(correlation_without_outlier, <span class="dv">2</span>)),</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"X"</span>, <span class="at">ylab=</span><span class="st">"Y"</span>, <span class="at">col=</span><span class="st">"steelblue"</span>, <span class="at">pch=</span><span class="dv">19</span>)</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x), <span class="at">col=</span><span class="st">"red"</span>)  <span class="co"># Add line of best fit</span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot with outlier</span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x_outlier, y_outlier, <span class="at">main=</span><span class="fu">paste</span>(<span class="st">"With Outlier</span><span class="sc">\n</span><span class="st">Correlation, r="</span>, <span class="fu">round</span>(correlation_with_outlier, <span class="dv">2</span>)),</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"X"</span>, <span class="at">ylab=</span><span class="st">"Y"</span>, <span class="at">col=</span><span class="st">"steelblue"</span>, <span class="at">pch=</span><span class="dv">19</span>)</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">15</span>, <span class="sc">-</span><span class="dv">15</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">pch=</span><span class="dv">4</span>, <span class="at">cex=</span><span class="dv">2</span>)  <span class="co"># Mark the outlier</span></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(y_outlier <span class="sc">~</span> x_outlier), <span class="at">col=</span><span class="st">"red"</span>)  <span class="co"># Add line of best fit</span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))  <span class="co"># Reset plot layout</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-outlieronr1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1074,44 +957,8 @@ Figure&nbsp;7.4: Effect of outlier on the magnitude of correlation coefficient (
 </div>
 </div>
 </div>
-<p>Even sometime the outlier(s) can change the sign of the correlation coefficient (see <a href="#fig-outlieronr2" class="quarto-xref">Figure&nbsp;<span>7.5</span></a>).</p>
+<p>Even sometime the outlier(s) can change the sign of the correlation coefficient (see <a href="#fig-outlieronr2" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-outlieronr2</span></a>).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate data with a positive correlation</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">50</span>, <span class="dv">0</span>, <span class="dv">10</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.5</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">40</span>, <span class="dv">0</span>, <span class="dv">1</span>)  <span class="co"># Negative linear relationship with some noise</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in -0.5 * x + rnorm(40, 0, 1): longer object length is not a multiple
-of shorter object length</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate correlation without the outlier</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>correlation_without_outlier <span class="ot">&lt;-</span> <span class="fu">cor</span>(x, y)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add an outlier that reverses the correlation direction</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>x_outlier <span class="ot">&lt;-</span> <span class="fu">c</span>(x, <span class="dv">50</span>)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>y_outlier <span class="ot">&lt;-</span> <span class="fu">c</span>(y, <span class="dv">10</span>)  <span class="co"># Extreme negative outlier</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate correlation with the outlier</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>correlation_with_outlier <span class="ot">&lt;-</span> <span class="fu">cor</span>(x_outlier, y_outlier)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot data</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))  <span class="co"># Arrange plots side-by-side</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot without outlier</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">main=</span><span class="fu">paste</span>(<span class="st">"Without Outlier</span><span class="sc">\n</span><span class="st">Correlation, r="</span>, <span class="fu">round</span>(correlation_without_outlier, <span class="dv">2</span>)),</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"X"</span>, <span class="at">ylab=</span><span class="st">"Y"</span>, <span class="at">col=</span><span class="st">"#389"</span>, <span class="at">pch=</span><span class="dv">19</span>)</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x), <span class="at">col=</span><span class="st">"red"</span>)  <span class="co"># Add line of best fit</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot with outlier</span></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x_outlier, y_outlier, <span class="at">main=</span><span class="fu">paste</span>(<span class="st">"With Outlier</span><span class="sc">\n</span><span class="st">Correlation, r="</span>, <span class="fu">round</span>(correlation_with_outlier, <span class="dv">2</span>)),</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"X"</span>, <span class="at">ylab=</span><span class="st">"Y"</span>, <span class="at">col=</span><span class="st">"#389"</span>, <span class="at">pch=</span><span class="dv">19</span>)</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">50</span>, <span class="dv">10</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">pch=</span><span class="dv">4</span>, <span class="at">cex=</span><span class="dv">2</span>)  <span class="co"># Mark the outlier</span></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(y_outlier <span class="sc">~</span> x_outlier), <span class="at">col=</span><span class="st">"red"</span>)  <span class="co"># Add line of best fit</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))  <span class="co"># Reset plot layout</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-outlieronr2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1199,7 +1046,7 @@ Figure&nbsp;7.5: Effect of outlier on the sign of correlation coefficient (r)
 </tr>
 </tbody>
 </table>
-<p><strong>Problem 15.2</strong> Quality of Teaching Assessments. A student organization surveyed both current students and recent graduates to obtain information on the quality of teaching at a particular university. An analysis of the responses provided the following teaching-ability rankings. Do the rankings given by the current students agree with the rankings given by the recent graduates ? <span class="citation" data-cites="anderson2020a">(<a href="references.html#ref-anderson2020a" role="doc-biblioref">Anderson 2020b</a>)</span></p>
+<p><strong>Problem 15.2</strong> Quality of Teaching Assessments. A student organization surveyed both current students and recent graduates to obtain information on the quality of teaching at a particular university. An analysis of the responses provided the following teaching-ability rankings. Do the rankings given by the current students agree with the rankings given by the recent graduates ? <span class="citation" data-cites="anderson2020a">(<a href="#ref-anderson2020a" role="doc-biblioref">Anderson 2020b</a>)</span></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1263,7 +1110,7 @@ Figure&nbsp;7.5: Effect of outlier on the sign of correlation coefficient (r)
 </table>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-anderson2020" class="csl-entry" role="listitem">
 Anderson, David R. 2020a. <em>Statistics for Business &amp; Economics</em>. 14e ed. Boston, MA: Cengage.
 </div>

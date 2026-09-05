@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -183,6 +148,25 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Applied Statistics and Probability for Engineers</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Applied-Statistics-and-Probability-for-Engineers.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Applied-Statistics-and-Probability-for-Engineers.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -406,7 +390,7 @@ Note
 <p>i) <span class="math inline">\(P(X=2)\)</span>;</p>
 <p>ii) <span class="math inline">\(P(X&lt;3)\)</span> and <span class="math inline">\(P(X&gt;2)\)</span>;</p>
 <p>iii) <span class="math inline">\(F(2)\)</span></p>
-<p><strong>Example</strong> <span class="citation" data-cites="walpole2017">(<a href="references.html#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017, Example 3.8</a>)</span>A shipment of 20 similar laptop computers to a retail outlet contains 3 that are defective. If a school makes a random purchase of 2 of these computers, <strong>find</strong> the probability distribution for <em>the number of defectives</em>.</p>
+<p><strong>Example</strong> <span class="citation" data-cites="walpole2017">(<a href="#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017, Example 3.8</a>)</span>A shipment of 20 similar laptop computers to a retail outlet contains 3 that are defective. If a school makes a random purchase of 2 of these computers, <strong>find</strong> the probability distribution for <em>the number of defectives</em>.</p>
 <p><strong><em>Solution:</em></strong> Let <span class="math inline">\(X\)</span> be a random variable whose values x are the possible numbers of defective computers purchased by the school. Then <span class="math inline">\(x\)</span> can only take the numbers 0, 1, and 2. Now ,</p>
 <p><span class="math inline">\(P(X=0)=f(0)=P(N,N)=\frac{\binom{17}{2}\binom{3}{0}}{\binom{20}{2}}=\frac{136}{190}\)</span></p>
 <p><span class="math inline">\(P(X=1)=f(1)=P(D,N)=\frac{\binom{3}{1}\binom{17}{1}}{\binom{20}{2}}=\frac{51}{190}\)</span></p>
@@ -430,7 +414,7 @@ Note
 </tr>
 </tbody>
 </table>
-<p><strong>Example</strong> <span class="citation" data-cites="baron2019">(<a href="references.html#ref-baron2019" role="doc-biblioref">Baron 2019, Exercise 3.1 (a)</a>)</span> A computer virus is trying to corrupt two files. The first file will be corrupted with probability 0.4. Independently of it, the second file will be corrupted with probability 0.3.</p>
+<p><strong>Example</strong> <span class="citation" data-cites="baron2019">(<a href="#ref-baron2019" role="doc-biblioref">Baron 2019, Exercise 3.1 (a)</a>)</span> A computer virus is trying to corrupt two files. The first file will be corrupted with probability 0.4. Independently of it, the second file will be corrupted with probability 0.3.</p>
 <p>Compute the probability mass function (<strong>PMF</strong>) of <span class="math inline">\(X\)</span>, <em>the number of corrupted files</em>.</p>
 <p><strong><em>Solution: (Will be discussed in class)</em></strong></p>
 </section>
@@ -678,45 +662,6 @@ X=0 ;  if\ \  a \ \ tail.\]</span></p>
 </div>
 <p><strong>Probability plot of binomial r.v for different values of</strong> <span class="math inline">\(p\)</span> and shape characteristics</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.2.1     ✔ readr     2.2.0
-✔ forcats   1.0.1     ✔ stringr   1.6.0
-✔ ggplot2   4.0.3     ✔ tibble    3.3.1
-✔ lubridate 1.9.5     ✔ tidyr     1.3.2
-✔ purrr     1.2.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>success <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p1<span class="ot">&lt;-</span><span class="fu">dbinom</span>(success, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span>.<span class="dv">2</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>p2<span class="ot">&lt;-</span><span class="fu">dbinom</span>(success, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span>.<span class="dv">5</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>p3<span class="ot">&lt;-</span><span class="fu">dbinom</span>(success, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span>.<span class="dv">8</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>wide.df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(success,p1,p2,p3)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#wide.df</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>wide.long<span class="ot">&lt;-</span>wide.df<span class="sc">%&gt;%</span><span class="fu">gather</span>(<span class="at">key =</span> <span class="st">"p"</span>,<span class="at">value =</span> <span class="st">"prob"</span>,<span class="sc">-</span>success)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#head(wide.long)</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>wide.long<span class="ot">&lt;-</span>wide.long<span class="sc">%&gt;%</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">p=</span><span class="fu">recode</span>(p,</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"p1"</span><span class="ot">=</span><span class="st">"n=10,p=0.2, positively skewed"</span>,</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"p2"</span><span class="ot">=</span><span class="st">"n=10,p=0.5, symmetric"</span>,</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"p3"</span><span class="ot">=</span><span class="st">"n=10,p=0.8, negatively skewed"</span>))</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>wide.long<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(success,prob))<span class="sc">+</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.4</span>,<span class="at">fill=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span>p)<span class="sc">+</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span><span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>)<span class="sc">+</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"x = # of success"</span>,<span class="at">y=</span><span class="st">"f(x)"</span>,</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> <span class="st">"Probability plot of binomial distribution"</span>, </span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>             <span class="co">#subtitle =expression(n==10)</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>             )<span class="sc">+</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"italic"</span>),</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                         <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"black"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -735,14 +680,14 @@ X=0 ;  if\ \  a \ \ tail.\]</span></p>
 <p><strong><em>Alternative:(iii)</em></strong></p>
 <p><span class="math inline">\(P(X \ge 3)=1-P(X&lt; 3)=1-P(X \le 2)=1-F(2)=1-0.3174=0.6826\)</span></p>
 <p><strong>Finding Binomial probability using Binomial Table</strong></p>
-<p>In the end of any Statistics book there are some <strong>Probability Distribution Table</strong>. We can use these table to compute the required probability for <em>specific values of the parameters</em> of certain probability distribution. Here I share the 1st page of <strong>Binomial distribution table</strong> <span class="citation" data-cites="baron2019">(<a href="references.html#ref-baron2019" role="doc-biblioref">Baron 2019</a>)</span>.</p>
+<p>In the end of any Statistics book there are some <strong>Probability Distribution Table</strong>. We can use these table to compute the required probability for <em>specific values of the parameters</em> of certain probability distribution. Here I share the 1st page of <strong>Binomial distribution table</strong> <span class="citation" data-cites="baron2019">(<a href="#ref-baron2019" role="doc-biblioref">Baron 2019</a>)</span>.</p>
 <p><img src="Binomial distribution_1st page.png" class="img-fluid"></p>
 <p><strong>Suppose</strong>, <span class="math inline">\(X\sim Binom(n,p)\)</span>; where <span class="math inline">\(n=5\)</span> and <span class="math inline">\(p=0.6\)</span>. Find, <em>(i)</em> <span class="math inline">\(P(X=2)\)</span> <em>(ii)</em> <span class="math inline">\(P(X \le 2)\)</span> <em>(iii)</em> <span class="math inline">\(P(X \ge 3)\)</span> using <strong>Table</strong>.</p>
 <p><strong><em>Solution:</em></strong></p>
 <p><em>(i)</em> <span class="math inline">\(P(X=2)=f(2)=F(2)-F(1)=0.3174-0.0870=0.2304\)</span>.</p>
 <p><em>(ii)</em> <span class="math inline">\(P(X\le 2=F(2)=0.3174\)</span></p>
 <p><em>(iii)</em> <span class="math inline">\(P(X \ge 3)=1-P(X&lt; 3)=1-F(2)=1-0.3174=0.6826\)</span></p>
-<p><strong>Exercise</strong><span class="citation" data-cites="walpole2017">(<a href="references.html#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017</a>)</span></p>
+<p><strong>Exercise</strong><span class="citation" data-cites="walpole2017">(<a href="#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017</a>)</span></p>
 <p><strong>5.9</strong> In testing a certain kind of truck tire over rugged terrain, it is found that 25% of the trucks fail to complete the test run without a blowout. Of the next 15 trucks tested, find the probability that: (a) from 3 to 6 have blowouts; (b) fewer than 4 have blowouts; (c) more than 5 have blowouts.</p>
 <p><em><strong>Solution</strong>:</em></p>
 <p>Let, <em>X= number of trucks that have blowouts</em></p>
@@ -757,10 +702,10 @@ X=0 ;  if\ \  a \ \ tail.\]</span></p>
 <p><strong>5.12</strong> A traffic control engineer reports that 75% of the vehicles passing through a checkpoint are from within the state. What is the probability that fewer than 4 of the next 9 vehicles are from out of state?</p>
 <p><strong>5.16</strong> Suppose that airplane engines operate independently and fail with probability equal to 0.4. Assuming that a plane makes a safe flight if at least one-half of its engines run, determine whether a 4-engine plane or a 2-engine plane has the higher probability for a successful flight.</p>
 <p><strong>5.25</strong> Suppose that for a very large shipment of integrated-circuit chips, the probability of failure for any one chip is 0.10. Assuming that the assumptions underlying the binomial distributions are met, find the probability that at most 3 chips fail in a random sample of 20.</p>
-<p><strong>Exercise</strong><span class="citation" data-cites="montgomery2014">(<a href="references.html#ref-montgomery2014" role="doc-biblioref">Montgomery and Runger 2014</a>)</span></p>
+<p><strong>Exercise</strong><span class="citation" data-cites="montgomery2014">(<a href="#ref-montgomery2014" role="doc-biblioref">Montgomery and Runger 2014</a>)</span></p>
 <p><strong>3-93</strong> Let <span class="math inline">\(X\)</span> be a binomial random variable with <span class="math inline">\(p = 0.1\)</span> . and <span class="math inline">\(n = 10\)</span>. Calculate the following probabilities from the binomial probability mass function and from the binomial table in Appendix A and compare results. (a) <span class="math inline">\(P(X\le 2)\)</span> (b) P(X&gt;8) (c) P(X = 4) (d) <span class="math inline">\(P(5 \le X \le7)\)</span></p>
 <p><strong>3-115</strong> The probability that a visitor to a Web site provides contact data for additional information is 0.01. Assume that 1000 visitors to the site behave independently. Determine the following probabilities: (a) No visitor provides contact data. (b) Exactly 10 visitors provide contact data. (c) More than 3 visitors provide contact data</p>
-<p><strong>Exercise</strong><span class="citation" data-cites="baron2019">(<a href="references.html#ref-baron2019" role="doc-biblioref">Baron 2019</a>)</span></p>
+<p><strong>Exercise</strong><span class="citation" data-cites="baron2019">(<a href="#ref-baron2019" role="doc-biblioref">Baron 2019</a>)</span></p>
 <p><strong>3.21.</strong> A lab network consisting of 20 computers was attacked by a computer virus. This virus enters each computer with probability 0.4, independently of other computers. Find the probability that it entered at least 10 computers.</p>
 <p><strong>3.22.</strong> Five percent of computer parts produced by a certain supplier are defective. What is the probability that a sample of 16 parts contains more than 3 defective ones?</p>
 <p><em>And so on….</em></p>
@@ -779,54 +724,6 @@ X=0 ;  if\ \  a \ \ tail.\]</span></p>
 <p><u>We write,</u> <span class="math inline">\(X\sim Geom(p)\)</span></p>
 <p><strong>Probability plot for different values of</strong> <span class="math inline">\(p\)</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">##| label: fig-figgeom</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">##| fig-height: 3</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#rm(list = ls())</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>fx<span class="ot">=</span><span class="dv">0</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>gx<span class="ot">=</span><span class="cf">function</span>(x,p){</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> x) {</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  fx[i]<span class="ot">=</span>p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">^</span>(x[i]<span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  fx</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#gx(c(1,2,3),0.9)</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#gx(trials,0.9)</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>g1<span class="ot">&lt;-</span><span class="fu">gx</span>(trials,<span class="fl">0.75</span>)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>g2<span class="ot">&lt;-</span><span class="fu">gx</span>(trials,<span class="fl">0.5</span>)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>g3<span class="ot">&lt;-</span><span class="fu">gx</span>(trials,<span class="fl">0.25</span>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>g_wide.df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(trials,g1,g2,g3)</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">#wide.df</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>g_wide.long<span class="ot">&lt;-</span>g_wide.df<span class="sc">%&gt;%</span><span class="fu">gather</span>(<span class="at">key =</span> <span class="st">"p"</span>,<span class="at">value =</span> <span class="st">"prob"</span>,<span class="sc">-</span>trials)</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co">#head(wide.long)</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co">#g_wide.long %&gt;% str()</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>g_wide.long<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(trials,prob))<span class="sc">+</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.4</span>,<span class="at">fill=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">facet_wrap</span>(<span class="sc">~</span>p,<span class="at">labeller =</span> <span class="fu">as_labeller</span>(</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>          <span class="fu">c</span>(<span class="st">"g1"</span><span class="ot">=</span><span class="st">"p=0.75"</span>,<span class="st">"g2"</span><span class="ot">=</span><span class="st">"p=0.50"</span>,<span class="st">"g3"</span><span class="ot">=</span><span class="st">"p=0.25"</span>)</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>                   )<span class="sc">+</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)<span class="sc">+</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"x = # of trials"</span>,<span class="at">y=</span><span class="st">"f(x)"</span>,</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>             <span class="at">title =</span> <span class="st">"Probability plot of Geometric distribution for different values of p"</span>, </span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>             <span class="co">#subtitle =expression(n==10)</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>             )<span class="sc">+</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"italic"</span>),</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>                         <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"black"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -921,29 +818,6 @@ X=0 ;  if\ \  a \ \ tail.\]</span></p>
 <p><strong>N.B</strong>: The mean and variance of Poisson random random variable are <em>identical</em>. This is the <em>unique property</em> of Poisson r.v.</p>
 <p><strong>Probability of plot of poisson r.v for different values of</strong> <span class="math inline">\(\lambda\)</span> (for a fixed interval <span class="math inline">\(t=1\)</span>)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>success <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">15</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ps1<span class="ot">&lt;-</span><span class="fu">dpois</span>(success,<span class="fl">1.5</span> )</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ps2<span class="ot">&lt;-</span><span class="fu">dpois</span>(success,<span class="dv">3</span> )</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>ps3<span class="ot">&lt;-</span><span class="fu">dpois</span>(success, <span class="dv">6</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>wide.ps<span class="ot">&lt;-</span><span class="fu">data.frame</span>(success,ps1,ps2,ps3)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#wide.ps</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>long.ps<span class="ot">&lt;-</span>wide.ps<span class="sc">%&gt;%</span><span class="fu">gather</span>(<span class="at">key =</span> <span class="st">"p"</span>,<span class="at">value =</span> <span class="st">"prob"</span>,<span class="sc">-</span>success)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#head(long.ps)</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>long.ps<span class="sc">$</span>p<span class="ot">&lt;-</span><span class="fu">factor</span>(long.ps<span class="sc">$</span>p,<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"lambda=={1.5}"</span>,<span class="st">"lambda=={3}"</span>,<span class="st">"lambda=={6}"</span>))</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#head(long.ps)</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>long.ps<span class="sc">%&gt;%</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(success,prob))<span class="sc">+</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_col</span>(<span class="at">width =</span> .<span class="dv">3</span>,<span class="at">fill=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>(<span class="sc">~</span>p,<span class="at">labeller =</span> label_parsed)<span class="sc">+</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">15</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                      )<span class="sc">+</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"x = # of success"</span>,<span class="at">y=</span><span class="st">"f(x)"</span>,</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span><span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"Probability plot of Poissoin PMF for different values of"</span>,<span class="st">" "</span>,lambda )))<span class="sc">+</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">color =</span> <span class="st">"black"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -962,7 +836,7 @@ X=0 ;  if\ \  a \ \ tail.\]</span></p>
 <p><strong>(ii)</strong> <span class="math inline">\(P(X\le2)=\sum_{x=0}^{2}f(x)=\sum_{x=0}^{2}\frac{e^{-3}(3)^x}{x!}=e^{-3}[\frac{3^0}{0!}+\frac{3^1}{1!}+\frac{3^2}{2!}]=0.4232\)</span></p>
 <p><strong>(iii)</strong> <span class="math inline">\(P(X \ge 3)=1-P(X&lt; 3)=1-P(X\le 2)=1-0.423=0.5768\)</span></p>
 <p><strong>Finding Poisson probability using Table</strong></p>
-<p>We can use Poisson distribution table to compute Poisson probabilities. Here I share the 1st page of <strong>Poisson distribution table</strong> <span class="citation" data-cites="baron2019">(<a href="references.html#ref-baron2019" role="doc-biblioref">Baron 2019</a>)</span>.</p>
+<p>We can use Poisson distribution table to compute Poisson probabilities. Here I share the 1st page of <strong>Poisson distribution table</strong> <span class="citation" data-cites="baron2019">(<a href="#ref-baron2019" role="doc-biblioref">Baron 2019</a>)</span>.</p>
 <p><img src="Poisson Table.png" class="img-fluid"></p>
 <p><strong>Consider</strong> a discrete r.v say <span class="math inline">\(X\sim Pois(\lambda t)\)</span>. Suppose, <span class="math inline">\(\lambda =1.5\)</span> and <span class="math inline">\(t=2\)</span>. <strong>Find</strong>, (i) <span class="math inline">\(P(X \le 2)\)</span> (ii)P(X=4)</p>
 <p><strong><em>Solution by using Table</em></strong>:</p>
@@ -970,9 +844,9 @@ X=0 ;  if\ \  a \ \ tail.\]</span></p>
 <p><strong>(i)</strong> <span class="math inline">\(P(X \le 2)=F(2)=0.423\)</span></p>
 <p>[For x=2 and <span class="math inline">\(\mu \ \ or \ \lambda =3\)</span>; corresponding probability in <strong>Table A3</strong> is 0.423]</p>
 <p><strong>(ii)</strong> <span class="math inline">\(P(X=4)=f(4)=F(4)-F(3)=0.815-0.647=0.168\)</span></p>
-<p><strong>Example 5.17:</strong><span class="citation" data-cites="walpole2017">(<a href="references.html#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017</a>)</span> During a laboratory experiment, the average number of radioactive particles passing through a counter in 1 millisecond is 4. What is the probability that 6 particles enter the counter in a given millisecond?</p>
-<p><strong>Example 5.18:</strong><span class="citation" data-cites="walpole2017">(<a href="references.html#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017</a>)</span> Ten is the average number of oil tankers arriving each day at a certain port. The facilities at the port can handle at most 15 tankers per day. What is the probability that on a given day tankers have to be turned away?</p>
-<p><strong>Example 3.8:</strong>[<span class="citation" data-cites="pishro-nik2014">(<a href="references.html#ref-pishro-nik2014" role="doc-biblioref">Pishro-Nik 2014</a>)</span>] The number of emails that I get in a weekday can be modeled by a Poisson distribution with an average of 0.2 emails per minute.</p>
+<p><strong>Example 5.17:</strong><span class="citation" data-cites="walpole2017">(<a href="#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017</a>)</span> During a laboratory experiment, the average number of radioactive particles passing through a counter in 1 millisecond is 4. What is the probability that 6 particles enter the counter in a given millisecond?</p>
+<p><strong>Example 5.18:</strong><span class="citation" data-cites="walpole2017">(<a href="#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017</a>)</span> Ten is the average number of oil tankers arriving each day at a certain port. The facilities at the port can handle at most 15 tankers per day. What is the probability that on a given day tankers have to be turned away?</p>
+<p><strong>Example 3.8:</strong>[<span class="citation" data-cites="pishro-nik2014">(<a href="#ref-pishro-nik2014" role="doc-biblioref">Pishro-Nik 2014</a>)</span>] The number of emails that I get in a weekday can be modeled by a Poisson distribution with an average of 0.2 emails per minute.</p>
 <ol type="1">
 <li><p>What is the probability that I get no emails in an interval of length 5 minutes?</p></li>
 <li><p>What is the probability that I get more than 3 emails in an interval of length 10 minutes?</p></li>
@@ -993,8 +867,8 @@ X=0 ;  if\ \  a \ \ tail.\]</span></p>
 <ul>
 <li>Mathematically, <span class="math inline">\(Binom (x; n,p)\approx Pois(\lambda)\)</span>; where <span class="math inline">\(\lambda=np\)</span>.</li>
 </ul>
-<p><strong>N.B: In practical situation</strong> if <span class="math inline">\(n \ge 30\)</span> and <span class="math inline">\(p\le 0.05\)</span> ;hence <span class="math inline">\(q\ge 0.95\)</span>,then the approximation is close enough to use the Poisson distribution for binomial problems<span class="citation" data-cites="baron2019">(<a href="references.html#ref-baron2019" role="doc-biblioref">Baron 2019</a>)</span>.</p>
-<p><strong>Example 5.20:</strong><span class="citation" data-cites="walpole2017">(<a href="references.html#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017</a>)</span> In a manufacturing process where glass products are made, defects or bubbles occur, occasionally rendering the piece undesirable for marketing. It is known that, on average, 1 in every 1000 of these items produced has one or more bubbles. What is the probability that a random sample of 8000 will yield fewer than 7 items possessing bubbles?</p>
+<p><strong>N.B: In practical situation</strong> if <span class="math inline">\(n \ge 30\)</span> and <span class="math inline">\(p\le 0.05\)</span> ;hence <span class="math inline">\(q\ge 0.95\)</span>,then the approximation is close enough to use the Poisson distribution for binomial problems<span class="citation" data-cites="baron2019">(<a href="#ref-baron2019" role="doc-biblioref">Baron 2019</a>)</span>.</p>
+<p><strong>Example 5.20:</strong><span class="citation" data-cites="walpole2017">(<a href="#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017</a>)</span> In a manufacturing process where glass products are made, defects or bubbles occur, occasionally rendering the piece undesirable for marketing. It is known that, on average, 1 in every 1000 of these items produced has one or more bubbles. What is the probability that a random sample of 8000 will yield fewer than 7 items possessing bubbles?</p>
 <p><strong><em>Solution:</em></strong></p>
 <p>Let,<span class="math inline">\(X=number\ \ of \ \ glasses\ \ possesing\ \ bubbles\)</span></p>
 <p>Given, <span class="math inline">\(Pr(buuble \ \ occurs)=p=1/1000=0.001\)</span> which is less than <span class="math inline">\(0.05\)</span>, and <span class="math inline">\(n=8000\)</span> which is greater than <span class="math inline">\(30\)</span>. So, the PMF of <span class="math inline">\(X\)</span> can be approximated by Poisson distribution with</p>
@@ -1002,7 +876,7 @@ X=0 ;  if\ \  a \ \ tail.\]</span></p>
 <p>According to question,</p>
 <p><span class="math inline">\(P(X&lt;7)=f(0)+f(1)+...+f(6)=F(6)=0.313\)</span> (<em>Ans.</em>)</p>
 <p>[By using <strong>Table A3</strong>]</p>
-<p><strong>Exercise 5.87:</strong><span class="citation" data-cites="walpole2017">(<a href="references.html#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017</a>)</span> Imperfections in computer circuit boards and computer chips lend themselves to statistical treatment. For a particular type of board, the probability of a diode failure is 0.03 and the board contains 200 diodes.</p>
+<p><strong>Exercise 5.87:</strong><span class="citation" data-cites="walpole2017">(<a href="#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017</a>)</span> Imperfections in computer circuit boards and computer chips lend themselves to statistical treatment. For a particular type of board, the probability of a diode failure is 0.03 and the board contains 200 diodes.</p>
 <ol type="a">
 <li><p>What is the mean number of failures among the diodes? (<strong><em>Ans:</em></strong> <span class="math inline">\(\mu=np=200*0.03=6\)</span>)</p></li>
 <li><p>What is the variance?(<strong><em>Ans:</em></strong> <span class="math inline">\(\sigma^2=np(1-p)=200*0.03*(1-0.03)=5.82\)</span>)</p></li>
@@ -1011,7 +885,7 @@ X=0 ;  if\ \  a \ \ tail.\]</span></p>
 </ol>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-baron2019" class="csl-entry" role="listitem">
 Baron, Michael. 2019. <em>Probability and statistics for computer scientists</em>. Third edition. A Chapman &amp; Hall book. Boca Raton: London.
 </div>

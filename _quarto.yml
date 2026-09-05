@@ -3,15 +3,17 @@ project:
 
 book:
   title: "Applied Statistics and Probability for Engineers"
+  date: today
+  date-format: long # This will display as "September 5, 2026"
+  
   author: 
     - name: Mohammad Saifuddin, Assistant Professor
       affiliations: 
         - name: Dept. of Math & Stat (BUBT)
-      #url: https://github.com/Saifuddin86
+      #url: https://github.com/msaif525/applied-statistics-probability-for-engineers
   
   #cover-image: cover.jpg
-
-  
+  downloads: [pdf, epub]
   
   chapters:
     - index.qmd
@@ -27,23 +29,7 @@ book:
     - summary.qmd
     - references.qmd
 
-
-downloads: [pdf, epub]
-
 bibliography: references.bib
-
-format:
-  html:
-    theme:
-      - cosmo
-      - brand
-  pdf:
-    documentclass: scrreprt
-
-editor: visual
-
-
-
 
 execute: 
   echo: false
