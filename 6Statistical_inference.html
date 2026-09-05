@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Statistical inference – Applied Statistics and Probability for Engineers</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./7Linear_regression.html" rel="next">
+<link href="./5joint_distribution.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./6Statistical_inference.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical inference</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Applied Statistics and Probability for Engineers</a> 
+        <div class="sidebar-tools-main">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Applied-Statistics-and-Probability-for-Engineers.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Applied-Statistics-and-Probability-for-Engineers.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1Introduction_to_statistics_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to statistics and Data analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2Probability_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3Random_variable_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Random variable: Discrete</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4Continuous_rv_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Continuous r.v and probability density function</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5joint_distribution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Joint Probability Distributions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6Statistical_inference.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./7Linear_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simple Linear Regression and Correlation</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./8MLR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Multiple Linear Regression (MLR)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9ANOVA_oneway.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Design and Analysis of Experiment: Single Factor ANOVA</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#parameter-estimation" id="toc-parameter-estimation" class="nav-link active" data-scroll-target="#parameter-estimation"><span class="header-section-number">6.1</span> Parameter estimation</a>
+  <ul class="collapse">
+  <li><a href="#point-estimation" id="toc-point-estimation" class="nav-link" data-scroll-target="#point-estimation"><span class="header-section-number">6.1.1</span> Point estimation</a></li>
+  <li><a href="#properties-of-point-estimators" id="toc-properties-of-point-estimators" class="nav-link" data-scroll-target="#properties-of-point-estimators"><span class="header-section-number">6.1.2</span> Properties of Point Estimators</a></li>
+  <li><a href="#sampling-distributions-and-the-central-limit-theorem" id="toc-sampling-distributions-and-the-central-limit-theorem" class="nav-link" data-scroll-target="#sampling-distributions-and-the-central-limit-theorem"><span class="header-section-number">6.1.3</span> Sampling Distributions and the Central Limit Theorem</a></li>
+  <li><a href="#methods-of-point-estimation" id="toc-methods-of-point-estimation" class="nav-link" data-scroll-target="#methods-of-point-estimation"><span class="header-section-number">6.1.4</span> Methods of point estimation</a></li>
+  </ul></li>
+  <li><a href="#interval-estimation" id="toc-interval-estimation" class="nav-link" data-scroll-target="#interval-estimation"><span class="header-section-number">6.2</span> Interval estimation</a>
+  <ul class="collapse">
+  <li><a href="#interval-estimate-of-a-population-mean-sigma-known" id="toc-interval-estimate-of-a-population-mean-sigma-known" class="nav-link" data-scroll-target="#interval-estimate-of-a-population-mean-sigma-known"><span class="header-section-number">6.2.1</span> Interval estimate of a population mean: <span class="math inline">\(\sigma\)</span> known</a></li>
+  <li><a href="#interpretation-of-confidence-interval" id="toc-interpretation-of-confidence-interval" class="nav-link" data-scroll-target="#interpretation-of-confidence-interval"><span class="header-section-number">6.2.2</span> <strong>Interpretation of confidence interval</strong></a></li>
+  <li><a href="#understanding-confidence-interval-through-simulation" id="toc-understanding-confidence-interval-through-simulation" class="nav-link" data-scroll-target="#understanding-confidence-interval-through-simulation"><span class="header-section-number">6.2.3</span> Understanding confidence interval through Simulation</a></li>
+  <li><a href="#interval-estimate-of-a-population-mean-sigma-unknown" id="toc-interval-estimate-of-a-population-mean-sigma-unknown" class="nav-link" data-scroll-target="#interval-estimate-of-a-population-mean-sigma-unknown"><span class="header-section-number">6.2.4</span> Interval estimate of a population mean: <span class="math inline">\(\sigma\)</span> unknown</a></li>
+  </ul></li>
+  <li><a href="#hypothesis-test-introduction-and-testing-one-population-parameter" id="toc-hypothesis-test-introduction-and-testing-one-population-parameter" class="nav-link" data-scroll-target="#hypothesis-test-introduction-and-testing-one-population-parameter"><span class="header-section-number">6.3</span> Hypothesis test : Introduction and testing one population parameter</a>
+  <ul class="collapse">
+  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition"><span class="header-section-number">6.3.1</span> <strong>Definition</strong></a></li>
+  <li><a href="#types-of-hypothesis" id="toc-types-of-hypothesis" class="nav-link" data-scroll-target="#types-of-hypothesis"><span class="header-section-number">6.3.2</span> Types of hypothesis</a></li>
+  <li><a href="#developing-hypotheses" id="toc-developing-hypotheses" class="nav-link" data-scroll-target="#developing-hypotheses"><span class="header-section-number">6.3.3</span> Developing hypotheses</a></li>
+  <li><a href="#types-of-test-based-on-alternative-hypothesis-h_1" id="toc-types-of-test-based-on-alternative-hypothesis-h_1" class="nav-link" data-scroll-target="#types-of-test-based-on-alternative-hypothesis-h_1"><span class="header-section-number">6.3.4</span> Types of test based on alternative hypothesis <span class="math inline">\(H_1\)</span></a></li>
+  <li><a href="#types-of-error-in-hypothesis-test" id="toc-types-of-error-in-hypothesis-test" class="nav-link" data-scroll-target="#types-of-error-in-hypothesis-test"><span class="header-section-number">6.3.5</span> Types of error in hypothesis test</a></li>
+  <li><a href="#hypothesis-testing-concerning-population-mean-mu" id="toc-hypothesis-testing-concerning-population-mean-mu" class="nav-link" data-scroll-target="#hypothesis-testing-concerning-population-mean-mu"><span class="header-section-number">6.3.6</span> Hypothesis testing concerning population mean (<span class="math inline">\(\mu\)</span>)</a></li>
+  <li><a href="#normality-test" id="toc-normality-test" class="nav-link" data-scroll-target="#normality-test"><span class="header-section-number">6.3.7</span> Normality test</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Statistical inference</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Statistical inference</strong> refers to the branch of statistics that focuses on making decisions and drawing conclusions about populations based on sample data. These methods use information collected from a sample to infer characteristics of the larger population.</p>
+<p>Statistical inference may be divided into two major areas:</p>
+<ul>
+<li><p><strong>Parameter estimation</strong> and</p></li>
+<li><p><strong>Hypothesis testing</strong></p></li>
+</ul>
+<p><strong>Parameter estimation</strong> involves estimation of population <strong>parameter</strong> from <strong>sample data</strong>.</p>
+<p><strong>Hypothesis testing</strong> involves test any <strong>claim</strong> about <strong>population parameter</strong> using sample data.</p>
+<section id="parameter-estimation" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="parameter-estimation"><span class="header-section-number">6.1</span> Parameter estimation</h2>
+<section id="point-estimation" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="point-estimation"><span class="header-section-number">6.1.1</span> Point estimation</h3>
+<p><strong>Point Estimation</strong> is a type of statistical inference where we use sample data to calculate a <strong>single number</strong> (a point) that serves as the best guess for an unknown population parameter.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Random sample</strong></p>
+<p><strong>Statistic</strong></p>
+<p><strong>Point estimator</strong></p>
+<p><strong>Point estimate</strong></p>
+</div>
+</div>
+<table class="caption-top table">
+<caption>Some common population parameters and their point estimators</caption>
+<colgroup>
+<col style="width: 24%">
+<col style="width: 8%">
+<col style="width: 66%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Population parameter</th>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: center;">Point estimator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Population mean</td>
+<td style="text-align: center;"><span class="math inline">\(\mu\)</span></td>
+<td style="text-align: center;"><p>Sample mean,</p>
+<p><span class="math inline">\(\bar X=\frac{\sum_{i=1}^n X_i}{n}\)</span></p></td>
+</tr>
+<tr class="even">
+<td>Population standard deviation</td>
+<td style="text-align: center;"><span class="math inline">\(\sigma\)</span></td>
+<td style="text-align: center;"><p>Sample standard deviation,</p>
+<p><span class="math inline">\(S=\sqrt{\frac{\sum(X-\bar X)^2}{n-1}}=\sqrt {\frac{\sum X^2 -n\cdot \bar X^2}{n-1}}\)</span></p></td>
+</tr>
+<tr class="odd">
+<td>Population proportion</td>
+<td style="text-align: center;"><span class="math inline">\(p\)</span></td>
+<td style="text-align: center;"><p>Sample proportion,</p>
+<p><span class="math inline">\(\hat P=\frac{\# \ \ of \ \  outcomes\ \ of  \ \ interest }{n}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="properties-of-point-estimators" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="properties-of-point-estimators"><span class="header-section-number">6.1.2</span> Properties of Point Estimators</h3>
+<p>Suppose</p>
+<p><span class="math inline">\(\theta\)</span> be the population parameter of interest</p>
+<p><span class="math inline">\(\hat \theta\)</span> be the sample statistic or point estimator of <span class="math inline">\(\theta\)</span></p>
+<p>A “good” estimator has some desirable properties.</p>
+<p><strong>Unbiasedness</strong></p>
+<p>A sample statistic <span class="math inline">\(\hat \theta\)</span> is said to be unbiased estimator of the population parameter <span class="math inline">\(\theta\)</span> if</p>
+<p><span class="math display">\[E(\hat\theta)=\theta\]</span> <strong>Efficiency</strong></p>
+<p><strong>Consistency</strong></p>
+</section>
+<section id="sampling-distributions-and-the-central-limit-theorem" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="sampling-distributions-and-the-central-limit-theorem"><span class="header-section-number">6.1.3</span> Sampling Distributions and the Central Limit Theorem</h3>
+<p>The probability distribution of a <strong>sample statistic</strong> is called a <strong>sampling distribution.</strong></p>
+<p>For example, due to sampling variability the <strong>sample mean</strong> <span class="math inline">\(\bar X\)</span> has a sampling distribution.</p>
+<p><strong>Sampling distribution of</strong> <span class="math inline">\(\bar X\)</span></p>
+<p>Suppose that a random sample of size <span class="math inline">\(n\)</span> is taken from a normal population with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Now each observation in this sample, say, <span class="math inline">\(X_1, X_2,...,X_n\)</span>, is a normally and independently distributed random variable with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Then because linear functions of independent, normally distributed random variables are also normally distributed (Chapter ?), we conclude that the sample mean</p>
+<p><span class="math display">\[\bar X=\frac{X_1+X_2+....+X_n}{n}\]</span> has a normal distribution with mean <span class="math inline">\(\mu_{\bar X}=\mu\)</span> and variance <span class="math inline">\(\sigma^2_{\bar X}=\frac{\sigma^2}{n}\)</span>.</p>
+<p>Symbolically, <span class="math inline">\(\bar X \sim N(\mu,\frac{\sigma^2}{n})\)</span>.</p>
+<p><strong>But what if we sampling from a non-normal population?</strong></p>
+<p>The sampling distribution of the sample mean will still be approximately normal with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\frac{\sigma^2}{n}\)</span> if the sample size <span class="math inline">\(n\)</span> is large. This is one of the most useful theorems in statistics, called the central limit theorem. The statement is as follows:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Central limit theorem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(X_1,X_2,...,X_n\)</span> is a random sample of size <span class="math inline">\(n\)</span> taken from a population (either finite or infinite) with mean <span class="math inline">\(\mu\)</span> and finite variance <span class="math inline">\(\sigma^2\)</span> and if <span class="math inline">\(\bar X\)</span> is the sample mean, the limiting form of the distribution of</p>
+<p><span class="math display">\[Z=\frac{\bar X-\mu}{\sigma/\sqrt n}\]</span></p>
+<p>as <span class="math inline">\(n\rightarrow\infty\)</span>, is the standard normal distribution that is <span class="math inline">\(Z\sim N(0,1)\)</span></p>
+</div>
+</div>
+<p>The definition of “sufficiently large” depends on the extent of non-normality of <span class="math inline">\(X\)</span> . Some authors consider a sample will be sufficiently large if <span class="math inline">\(n\ge30\)</span> <span class="citation" data-cites="walpole2017">(<a href="references.html#ref-walpole2017" role="doc-biblioref">Walpole et al. 2017</a>)</span>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Central Limit Theorem through simulation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this section we illustrates how sampling distributions of sample means approximate to normal or bell shaped distribution as we increase the sample size .</p>
+<p><strong>At first,</strong> we consider a population data regarding <code>gdp per capita (USD),2023</code> of 218 countries. We can see that the distribution of <code>gdp per capita</code> is highly skewed to the right (see <a href="#fig-fig_clt1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig_clt1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig_clt1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="6Statistical_inference_files/figure-html/fig-fig_clt1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig_clt1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: Frequency histogram of GDP percapita of N=218 countries
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Now</strong> we draw 1000 random samples (without replacement) of different sample sizes and then plot the histogram of samples means.</p>
+<div id="fig-cltsim" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cltsim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cltsim" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-cltsim-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-cltsim-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="6Statistical_inference_files/figure-html/fig-cltsim-1.png" class="img-fluid figure-img" data-ref-parent="fig-cltsim" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cltsim-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Sampling distribution of sample mean for sample size n=10
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cltsim" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-cltsim-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-cltsim-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="6Statistical_inference_files/figure-html/fig-cltsim-2.png" class="img-fluid figure-img" data-ref-parent="fig-cltsim" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cltsim-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Sampling distribution of sample mean for sample size n=30
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cltsim" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div id="fig-cltsim-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-cltsim-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="6Statistical_inference_files/figure-html/fig-cltsim-3.png" class="img-fluid figure-img" data-ref-parent="fig-cltsim" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cltsim-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) Sampling distribution of sample mean for sample size n=100
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cltsim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: Demonstration of Central Limit Theorem through simulation
+</figcaption>
+</figure>
+</div>
+<p>From <a href="#fig-cltsim" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> we can see that as the sample size increases, the sampling distribution of <strong>sample mean</strong> tends to bell-shaped or normal though the population data was very skewed to the right. This simulation clearly demonstrate the fact of Central Limit Theorem (CLT).</p>
+<p>For more interactive simulation of <strong>CLT</strong> please <a href="https://saifuddin24.shinyapps.io/CLT_Sim/">click here to visit the ShinyApp for Central Limit Theorem Simulation</a>.</p>
+</div>
+</div>
+<p><strong>Problem 7.1</strong> An electronics company manufactures resistors that have a mean resistance of 100 ohms and a standard deviation of 10 ohms. The distribution of resistance is normal. <strong>Find</strong> the probability that a random sample of n = 25 resistors will have an average resistance of fewer than 95 ohms.</p>
+<p><strong>Problem 7.2</strong> Resistors are labeled 100 <span class="math inline">\(\Omega\)</span>. In fact, the actual resistances are uniformly distributed on the interval <span class="math inline">\((95, 103)\)</span>. Suppose 40 resistors are randomly selected. <strong>Determine</strong> the probability that the sample mean of 40 resistors will be less than 100 <span class="math inline">\(\Omega\)</span>?</p>
+<p><u>Solution:</u> Let <span class="math inline">\(X\)</span> be the resistance in ohm. Given <span class="math inline">\(X\sim U(95,103)\)</span>.</p>
+<p>Hence, <span class="math inline">\(\mu=E(X)=\frac{a+b}{2}=\frac{95+103}{2}=99\)</span> and</p>
+<p><span class="math inline">\(\sigma^2=\frac{(b-a)^2}{12}=\frac{(103-95)^2}{12}=5.33\)</span>.</p>
+<p>Since <span class="math inline">\(n=40\)</span> is sufficiently large so according to <strong>CLT</strong> <span class="math inline">\(\bar  X\sim_{} N(\mu, \sigma^2_{\bar X})\)</span> approximately.</p>
+<p>Here, <span class="math inline">\(\sigma^2_{\bar X}=\sigma^2/n=5.33/40=0.13325\)</span> and <span class="math inline">\(\sigma_{\bar X}=\sqrt 0.13325=0.3650\)</span></p>
+<p><span class="math display">\[\therefore P(\bar X&lt;100)=P\left(\frac{\bar X-\mu}{\sigma_{\bar X}}&lt; \frac{100-99}{0.3650}\right)=P(Z&lt;2.74)=0.9969\]</span> .</p>
+<p><strong>Problem 7.3</strong> A synthetic fiber used in manufacturing carpet has tensile strength that is normally distributed with mean 75.5 psi and standard deviation 3.5 psi. <strong>Find</strong> the probability that a random sample of n = 6 fiber specimens will have sample mean tensile strength that exceeds 75.75 psi.<br>
+</p>
+</section>
+<section id="methods-of-point-estimation" class="level3" data-number="6.1.4">
+<h3 data-number="6.1.4" class="anchored" data-anchor-id="methods-of-point-estimation"><span class="header-section-number">6.1.4</span> Methods of point estimation</h3>
+<p>Two popular methods of estimations are (a) the <strong>method of moments</strong> and (b)the <strong>method of</strong> <strong>maximum likelihood</strong> .</p>
+<section id="method-of-moments" class="level4" data-number="6.1.4.1">
+<h4 data-number="6.1.4.1" class="anchored" data-anchor-id="method-of-moments"><span class="header-section-number">6.1.4.1</span> Method of moments</h4>
+<p>Method of moments uses the relationship between population and sample moments to estimate parameters of interest.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Moments
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <span class="math inline">\(k^{th}\)</span> population moment is</p>
+<p><span class="math display">\[\mu'{_k}= E(X^k) ,\ \  k=1,2,...\]</span></p>
+<p>The corresponding <span class="math inline">\(k^{th}\)</span> sample moment is</p>
+<p><span class="math display">\[m'_{k}=\frac{\sum_{i=1}^n X_i} {n} , \ \ k=1,2,....\]</span></p>
+</div>
+</div>
+</section>
+<section id="moment-estimators" class="level4" data-number="6.1.4.2">
+<h4 data-number="6.1.4.2" class="anchored" data-anchor-id="moment-estimators"><span class="header-section-number">6.1.4.2</span> Moment Estimators</h4>
+<p>To estimate <span class="math inline">\(k\)</span> parameters, equate the <em>first</em> <span class="math inline">\(k\)</span> population moments to the first <span class="math inline">\(k\)</span> sample moments and solving the resulting equations for the unknown parameters.</p>
+<p>For instance, to estimate <strong>two parameter</strong> we can write</p>
+<p><span class="math display">\[\mu'_{1}=m'_{1}\]</span></p>
+<p>and</p>
+<p><span class="math display">\[\mu'_{2}=m'_{2}\]</span></p>
+<p>For details see <span class="citation" data-cites="montgomery2014">(<a href="references.html#ref-montgomery2014" role="doc-biblioref">Montgomery and Runger 2014, 256</a>)</span> and <span class="citation" data-cites="baron2019">(<a href="references.html#ref-baron2019" role="doc-biblioref">Baron 2019, 245</a>)</span>.</p>
+</section>
+<section id="method-of-maximum-likelihood" class="level4" data-number="6.1.4.3">
+<h4 data-number="6.1.4.3" class="anchored" data-anchor-id="method-of-maximum-likelihood"><span class="header-section-number">6.1.4.3</span> Method of maximum likelihood</h4>
+<p>The maximum likelihood technique is among the most effective ways to get a point estimator of a parameter. The renowned British statistician Sir R. A. Fisher created this method in the 1920s. As the name suggests, the value of the parameter that maximizes the <strong>likelihood function</strong> will serve as the estimator.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Maximum Likelihood Estimator
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose that <span class="math inline">\(X\)</span> is a random variable with probability distribution <span class="math inline">\(f (x;\theta )\)</span> where <span class="math inline">\(\theta\)</span> is a single unknown parameter. Let <span class="math inline">\(x_1,x_2,...,x_n\)</span> be the observed values in a random sample of size <span class="math inline">\(n\)</span>. Then the likelihood function of the sample is</p>
+<p><span class="math display">\[L(\theta)=f(x_1;\theta)\cdot f(x_2;\theta)....f(x_n;\theta)=\prod_{i=1}^n f(x_i;\theta)\]</span> The <strong>maximum likelihood estimator (MLE)</strong> of <span class="math inline">\(\theta\)</span> is the value of <span class="math inline">\(\theta\)</span> that maximizes the likelihood function <span class="math inline">\(L(\theta)\)</span> .</p>
+</div>
+</div>
+<p>For details see <span class="citation" data-cites="montgomery2014">(<a href="references.html#ref-montgomery2014" role="doc-biblioref">Montgomery and Runger 2014, 258</a>)</span> and <span class="citation" data-cites="baron2019">(<a href="references.html#ref-baron2019" role="doc-biblioref">Baron 2019, 248</a>)</span>.</p>
+</section>
+</section>
+</section>
+<section id="interval-estimation" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="interval-estimation"><span class="header-section-number">6.2</span> Interval estimation</h2>
+<p>Instead of estimating a population parameter by a single value (point estimator) it is more reasonable to estimate with an <strong>interval</strong> with some confidence (probability) that our <strong>parameter</strong> value will be in the <strong>interval.</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Interval Estimator
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An <strong>interval estimator</strong> is a rule for determining (based on sample information) an interval that is likely to include the parameter. The general form of an interval estimate is as follows:</p>
+<p><span class="math display">\[Point\ \ estimate \pm margin \ \ of \ \ error\]</span></p>
+</div>
+</div>
+<p>Due to sampling variability, <strong>interval estimator</strong> is also random.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Developing (1-<span class="math inline">\(\alpha\)</span>)% CI for <span class="math inline">\(\mu\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-figCI" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-figCI-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="6Statistical_inference_files/figure-html/fig-figCI-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-figCI-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.3: <span class="math inline">\(P(-z_{\alpha/2}&lt;Z&lt;z_{\alpha/2}) =1-\alpha\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="interval-estimate-of-a-population-mean-sigma-known" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="interval-estimate-of-a-population-mean-sigma-known"><span class="header-section-number">6.2.1</span> Interval estimate of a population mean: <span class="math inline">\(\sigma\)</span> known</h3>
+<p>The <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval for <span class="math inline">\(\mu\)</span> is :</p>
+<p><span id="eq-9.1"><span class="math display">\[\bar x \pm z_{\alpha/2} \frac{\sigma}{\sqrt n} \tag{6.1}\]</span></span></p>
+<p>Or,</p>
+<p><span class="math display">\[\bar x-z_{\alpha/2}\frac {\sigma}{\sqrt n}, \bar x+z_{\alpha/2}\frac {\sigma}{\sqrt n}\]</span></p>
+<p>We can express this confidence interval in a probabilistic way:</p>
+<p><span class="math display">\[P\left( \bar x-z_{\alpha/2}\frac{\sigma}{\sqrt n}&lt;\mu&lt;\bar x+z_{\alpha/2}\frac{\sigma}{\sqrt n}  \right)=1-\alpha\]</span></p>
+<p><strong>NOTE:</strong></p>
+<p>1) Here, <span class="math inline">\(z_{\alpha/2}\)</span> is the <span class="math inline">\(z\)</span> value providing an area of <span class="math inline">\(\alpha/2\)</span> in the upper tail of the standard normal distribution that is <span class="math inline">\(P(Z&gt;z_{\alpha/2})=\alpha/2\)</span>.</p>
+<p>2) <span class="math inline">\(z_{\alpha/2} \cdot \frac{\sigma}{\sqrt n}\)</span> is often called <strong>margin of error (ME)</strong>.</p>
+</section>
+<section id="interpretation-of-confidence-interval" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="interpretation-of-confidence-interval"><span class="header-section-number">6.2.2</span> <strong>Interpretation of confidence interval</strong></h3>
+<p>The probabilistic equation of confidence interval says that, if we repeatedly construct confidence intervals in this manner, we will expect <span class="math inline">\((1-\alpha)100\%\)</span> of them contain <span class="math inline">\(\mu\)</span>.</p>
+</section>
+<section id="understanding-confidence-interval-through-simulation" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="understanding-confidence-interval-through-simulation"><span class="header-section-number">6.2.3</span> Understanding confidence interval through Simulation</h3>
+<p>Suppose <span class="math inline">\(X\sim N(50,5^2)\)</span> . Now consider a population data of size <span class="math inline">\(N=10000\)</span> and the histogram of <span class="math inline">\(X\)</span> is:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="6Statistical_inference_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now we draw a random sample of size <span class="math inline">\(n=50\)</span> from this population and construct a 95% confidence interval (CI) for <span class="math inline">\(\mu\)</span>. The CI may or may not include the <span class="math inline">\(\mu=50\)</span> !!!</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Sample data : 52.60842 55.16664 59.23435 44.2092 50.94234 43.34063 44.65922 53.81687 47.60075 46.63776 49.04826 49.44461 52.87322 46.22968 48.2174 55.67331 53.41989 51.86472 54.8001 41.25542 47.11374 47.38467 46.27874 49.85406 44.46384 52.43189 44.33381 53.19745 53.2059 57.02731 43.5203 48.93579 50.28559 55.69281 48.55212 49.2889 45.48768 46.8649 46.96022 35.22993 54.00936 58.99123 50.92287 45.76209 45.1751 44.65327 48.44115 49.47725 55.49664 44.73951</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sample mean: 49.3</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>95%  CI: 
+ [Lower ,Upper] 
+ [ 47.91 , 50.68 ]</code></pre>
+</div>
+</div>
+<p>Luckily our 95% CI contains the true population mean <span class="math inline">\(\mu=50\)</span> 😊.</p>
+<p>Lets simulate 100 samples each of size <span class="math inline">\(n=50\)</span> and construct all 95% CIs.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-conf_sim" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-conf_sim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="6Statistical_inference_files/figure-html/fig-conf_sim-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-conf_sim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.4: Simulation of 95% confidence intervals for <span class="math inline">\(\mu\)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We can see that out of 100 CIs , 95 of them contain true population mean <span class="math inline">\(\mu=50\)</span> and the rest 5 do not.</p>
+<table class="caption-top table">
+<caption>Four Commonly Used Confidence Levels and <span class="math inline">\(z_{\alpha/2}\)</span></caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(1-\alpha\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\alpha\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(z_{\alpha/2}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.90</td>
+<td style="text-align: center;">0.10</td>
+<td style="text-align: center;">1.645</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.95</td>
+<td style="text-align: center;">0.05</td>
+<td style="text-align: center;">1.96</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.98</td>
+<td style="text-align: center;">0.02</td>
+<td style="text-align: center;">2.33</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.99</td>
+<td style="text-align: center;">0.01</td>
+<td style="text-align: center;">2.575</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="interval-estimate-of-a-population-mean-sigma-unknown" class="level3" data-number="6.2.4">
+<h3 data-number="6.2.4" class="anchored" data-anchor-id="interval-estimate-of-a-population-mean-sigma-unknown"><span class="header-section-number">6.2.4</span> Interval estimate of a population mean: <span class="math inline">\(\sigma\)</span> unknown</h3>
+<p>The <span class="math inline">\((1-\alpha)100\%\)</span> confidence interval for <span class="math inline">\(\mu\)</span> is :</p>
+<p><span id="eq-9.2"><span class="math display">\[\bar x \pm t_{\alpha/2} \frac{s}{\sqrt n} \tag{6.2}\]</span></span></p>
+<p>Or,</p>
+<p><span class="math display">\[\bar x-t_{\alpha/2}\frac {s}{\sqrt n}, \bar x+t_{\alpha/2}\frac {s}{\sqrt n}\]</span></p>
+<p>We can express this confidence interval in a probabilistic way:</p>
+<p><span class="math display">\[P\left( \bar x-t_{\alpha/2}\frac{s}{\sqrt n}&lt;\mu&lt;\bar x+t_{\alpha/2}\frac{s}{\sqrt n}  \right)=1-\alpha\]</span></p>
+<p>Here, <span class="math inline">\(t_{\alpha/2}\)</span> is the <span class="math inline">\(t\)</span> value providing an area of <span class="math inline">\(\alpha/2\)</span> in the upper tail of the <span class="math inline">\(t\)</span> distribution with <span class="math inline">\((n-1)\)</span> degrees of freedom that is <span class="math inline">\(P(T&gt;t_{\alpha/2,n-1})=\alpha/2\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span><em>t</em>-Distribution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(Z\sim N(0,1)\)</span> and <span class="math inline">\(V\sim \chi^2 _\nu\)</span> . If <span class="math inline">\(Z\)</span> and <span class="math inline">\(V\)</span> are independent then the random variable</p>
+<p><span class="math display">\[T=\frac{Z}{\sqrt {V/\nu}}\]</span></p>
+<p>said to have a <em>Student-t distribution with</em> <span class="math inline">\(\nu\)</span> <em>degrees of freedom.</em> The PDF of <span class="math inline">\(T\)</span> is</p>
+<p><span class="math display">\[f(t)=\frac{\Gamma [(\nu+1)/2]}{\sqrt{ \pi\nu} \ \ \Gamma{(\nu/2)}}\left(1+\frac{t^2}{\nu}\right)^{-(\nu+1)/2} ; -\infty&lt;t&lt;\infty.\]</span></p>
+<p><strong>Properties:</strong></p>
+<ol type="1">
+<li><p><strong>Symmetry:</strong> <span class="math inline">\(t\)</span>-distribution is symmetric about mean (zero). So</p>
+<p>if <span class="math inline">\(P(T&gt;t_\nu)=\alpha\)</span> then <span class="math inline">\(P(T&lt;-t_\nu)=\alpha\)</span>.</p></li>
+<li><p><strong>Convergence to Normal:</strong> As <span class="math inline">\(n\rightarrow\infty\)</span> then the distribution of <span class="math inline">\(T_\nu\)</span> approaches the <strong>standard normal distribution</strong>.</p></li>
+<li><p><strong>Cauchy as special case:</strong> The <span class="math inline">\(T_1\)</span> distribution is the same as the Cauchy distribution.</p></li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="hypothesis-test-introduction-and-testing-one-population-parameter" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="hypothesis-test-introduction-and-testing-one-population-parameter"><span class="header-section-number">6.3</span> Hypothesis test : Introduction and testing one population parameter</h2>
+<section id="definition" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="definition"><span class="header-section-number">6.3.1</span> <strong>Definition</strong></h3>
+<p>A statistical hypothesis is a <em>statement</em> about the <em>parameters</em> of one or more populations.</p>
+<p><strong>Example 1:</strong> A manufacturer claims that the mean life of a smartphone is more than 1.5 years.</p>
+<p><strong>Example 2:</strong> A local courier service claims that they deliver a ordered product within 30 minutes on average.</p>
+<p><strong>Example 3:</strong> A sports drink maker claims that the mean calorie content of its beverages is 72 calories per serving.</p>
+</section>
+<section id="types-of-hypothesis" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="types-of-hypothesis"><span class="header-section-number">6.3.2</span> Types of hypothesis</h3>
+<p>Statistical hypothesis are stated in two forms- (i) Null hypothesis (<span class="math inline">\(H_0\)</span>) and (ii) Alternative hypothesis (<span class="math inline">\(H_1\)</span>).</p>
+<p>Both null and alternative hypothesis are the written about the parameter of interest based on the claim.</p>
+<ul>
+<li><p>We will always state the null hypothesis as an <strong>equality claim</strong>.</p></li>
+<li><p>However, when the alternative hypothesis is stated with the <strong>“&lt;”</strong> sign, the implicit claim in the null hypothesis can be taken as <strong>” ≥ “</strong> or <strong>“=”</strong> sign.</p></li>
+<li><p>When the alternative hypothesis is stated with the <strong>“&gt;”</strong> sign, the implicit claim in the null hypothesis can be taken as <strong>“≤”</strong> or <strong>“=”</strong> sign.</p></li>
+</ul>
+</section>
+<section id="developing-hypotheses" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="developing-hypotheses"><span class="header-section-number">6.3.3</span> Developing hypotheses</h3>
+<p>To develop or state null and alternative hypothesis, at first we have to clearly identify the <strong>“claim”</strong> about population parameter. Now we will see some examples.</p>
+<p><strong>Example 1:</strong> A manufacturer claims that the mean life of a smartphone is more than 1.5 years.</p>
+<p><strong>Hypothesis:</strong></p>
+<div class="text-center">
+<p><span class="math inline">\(H_0:\mu=1.5\)</span></p>
+<p><span class="math inline">\(\ \ \ \ \ \ \ \ \ \ \ \ \ \  H_1: \mu&gt;1.5 \ \ (claim)\)</span></p>
+</div>
+<p><strong>Example 2:</strong> A local courier service claims that they deliver a ordered product within 30 minutes on average.</p>
+<p><strong>Hypothesis:</strong></p>
+<div class="text-center">
+<p><span class="math inline">\(H_0: \mu=30\)</span></p>
+<p><span class="math inline">\(\ \ \ \ \ \ \ \ \ \ \ \ \ \ H_1: \mu&lt;30 \ \ (claim)\)</span></p>
+</div>
+<p><strong>Example 3:</strong> A sports drink maker claims that the mean calorie content of its beverages is 72 calories per serving.</p>
+<p><strong>Hypothesis:</strong></p>
+<div class="text-center">
+<p><span class="math inline">\(\ \ \ \ \ \ \ \ \ \ \ \ \ \ H_0: \mu=72 \ \ (claim)\)</span></p>
+<p><span class="math inline">\(H_1: \mu \ne 72\)</span></p>
+</div>
+</section>
+<section id="types-of-test-based-on-alternative-hypothesis-h_1" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="types-of-test-based-on-alternative-hypothesis-h_1"><span class="header-section-number">6.3.4</span> Types of test based on alternative hypothesis <span class="math inline">\(H_1\)</span></h3>
+<ul>
+<li><p><span class="math inline">\(H_1: \mu&lt; \mu_0\)</span> (Lower tailed)</p></li>
+<li><p><span class="math inline">\(H_1: \mu&gt; \mu_0\)</span> (Upper tailed)</p></li>
+<li><p><span class="math inline">\(H_1: \mu \ne \mu_0\)</span> (Two-tailed)</p></li>
+</ul>
+</section>
+<section id="types-of-error-in-hypothesis-test" class="level3" data-number="6.3.5">
+<h3 data-number="6.3.5" class="anchored" data-anchor-id="types-of-error-in-hypothesis-test"><span class="header-section-number">6.3.5</span> Types of error in hypothesis test</h3>
+<p>While testing a statistical hypothesis concerning population parameter we commit two types of errors.</p>
+<ul>
+<li><p><strong>Type I error</strong> occurs when we <strong>reject</strong> a <strong>TRUE</strong> <span class="math inline">\(H_0\)</span></p></li>
+<li><p><strong>Type II error</strong> occurs when we <strong>FAIL to reject</strong> a <strong>FALSE</strong> <span class="math inline">\(H_0\)</span></p></li>
+<li><p>The <strong>Level of significance</strong> is the probability of comiting <strong>Type</strong> <strong>I error</strong>. It is denoted by <span class="math inline">\(\alpha\)</span>.</p></li>
+</ul>
+<p><span class="math display">\[\alpha= P(Type \ \ I \ \ error)\]</span></p>
+<ul>
+<li>The probability of committing a <strong>Type II error</strong>, denoted by <span class="math inline">\(\beta\)</span>.</li>
+</ul>
+<p><span class="math display">\[\beta =P(Type \ \ II \ \ error)\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Type I</strong> <strong>error</strong> is more serious than <strong>Type II</strong> error. Because rejecting a TRUE statement is more devastating than FAIL to reject a FALSE statement. So, we always try to keep our probability of Type I error as small as possible (1% or at most 5%).</p>
+</div>
+</div>
+<p><strong>So, how these hypotheses will be tested?</strong></p>
+<p>To test a hypothesis we have to determine</p>
+<ul>
+<li><p>a <strong>test-statistic</strong>; and</p></li>
+<li><p><strong>Critical/Rejection region</strong> based on the sampling distribution of test-statistic for a given <span class="math inline">\(\alpha\)</span> ;</p></li>
+<li><p>If the value of test-statistic <strong>falls</strong> in <strong>Critical/Rejection region</strong>, then we reject Null (<span class="math inline">\(H_0\)</span>) hypothesis; otherwise not.</p></li>
+</ul>
+<p>Another way is to use <strong>P-value.</strong> What is p-value?</p>
+<ul>
+<li><p>The <strong>P-value</strong> is the smallest level of significance that would lead to rejection of the null hypothesis <span class="math inline">\(H_0\)</span> with the given data.</p></li>
+<li><p>The <strong>P-value</strong> is the probability of observing a test statistic as extreme as, or more extreme than, the value calculated from your sample data, <em>assuming that the null hypothesis is true</em>.</p></li>
+<li><p><strong>If</strong> <span class="math inline">\(P\)</span><strong>-value</strong> <span class="math inline">\(\le\alpha\)</span> <strong>, reject the null hypothesis otherwise we fail to reject</strong> <span class="math inline">\(H_0\)</span><strong>.</strong></p></li>
+<li><p>Most of the statistical softwares routinely compute p-value for any hypothesis test.<br>
+</p></li>
+</ul>
+</section>
+<section id="hypothesis-testing-concerning-population-mean-mu" class="level3" data-number="6.3.6">
+<h3 data-number="6.3.6" class="anchored" data-anchor-id="hypothesis-testing-concerning-population-mean-mu"><span class="header-section-number">6.3.6</span> Hypothesis testing concerning population mean (<span class="math inline">\(\mu\)</span>)</h3>
+<p>The following two hypotheses tests are used concerning population mean (<span class="math inline">\(\mu\)</span>):</p>
+<p>1. One sample z-test (with known <span class="math inline">\(\sigma\)</span>)</p>
+<p>2. One sample t-test (with unknown <span class="math inline">\(\sigma\)</span>)<br>
+</p>
+<section id="one-sample-z-test" class="level4" data-number="6.3.6.1">
+<h4 data-number="6.3.6.1" class="anchored" data-anchor-id="one-sample-z-test"><span class="header-section-number">6.3.6.1</span> One sample z-test</h4>
+<p>When sampling is from a <strong>normally distributed population</strong> or <strong>sample size is sufficiently large</strong> and t<strong>he population variance is known</strong>, the test statistic for testing <span class="math inline">\(H_0: \mu=\mu_0\)</span> at <span class="math inline">\(\alpha\)</span> is</p>
+<p><span class="math display">\[z_0=\frac{\bar x-\mu_0}{\sigma /\sqrt n}\]</span></p>
+<p><strong>Decision (Critical value approach):</strong> If calculated <span class="math inline">\(z\)</span> falls in rejection region (CR) , then reject <span class="math inline">\(H_0\)</span> . Otherwise, do not reject <span class="math inline">\(H_0\)</span>.</p>
+<ul>
+<li><p>For lower tailed test, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(z_0&lt;-z_\alpha\)</span> ;</p></li>
+<li><p>For upper tailed test, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(z_0&gt; z_\alpha\)</span> ;</p></li>
+<li><p>For two-tailed test, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(z_0&lt;-z_{\alpha/2}\)</span> or <span class="math inline">\(z_0&gt;z_{\alpha/2}\)</span> .</p></li>
+</ul>
+<div id="fig-7.5" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Source: D.C Montgomery (2014)">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-7.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/clipboard-3183526582.png" class="img-fluid figure-img" alt="Source: D.C Montgomery (2014)" width="624">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.5: Critical region for test of hypothesis (a) Two-tailed test (b) Upper-tailed test (c) Lower-tailed test
+</figcaption>
+</figure>
+</div>
+<p><strong>Decision (P-value approach):</strong> If calculated P-value for the test statistic is less than or equal to <span class="math inline">\(\alpha\)</span> then reject the <span class="math inline">\(H_0\)</span> otherwise do not reject.</p>
+<ul>
+<li><p>For lower tailed test, <span class="math inline">\(P\)</span>-value <span class="math inline">\(=P(Z&lt;z_0)\)</span>;</p></li>
+<li><p>For upper tailed test, <span class="math inline">\(P\)</span>-value <span class="math inline">\(=P(Z&gt;z_0)\)</span>;</p></li>
+<li><p>For two-tailed test, <span class="math inline">\(P\)</span>-value <span class="math inline">\(P(Z&gt;|z_0|)+P(Z&lt;-|z_0|)]\)</span>.</p></li>
+</ul>
+<p><strong>Problem 7.4</strong> State the null and alternative hypothesis in each case.</p>
+<p>a) A hypothesis test will be used to potentially provide evidence that the population mean is more than 10.</p>
+<p>b) A hypothesis test will be used to potentially provide evidence that the population mean is not equal to 7.</p>
+<p>c) A hypothesis test will be used to potentially provide evidence that the population mean is less than 5.<br>
+</p>
+<p><strong>Problem 7.5 (a)</strong> For the hypothesis test H0: μ = 10 against H1:μ &gt;10 and variance known, calculate the P-value for each of the following test statistics.</p>
+<p>(i) <span class="math inline">\(z_0 = 2.05\)</span> (ii) <span class="math inline">\(z_0 = - 1.84\)</span> (iii) <span class="math inline">\(z_0 = 0.4\)</span><br>
+</p>
+<p><u>Solution 7.5 (a):</u> Since this is an upper-tailed test so</p>
+<p>(i) P-value=<span class="math inline">\(P(Z&gt;2.05)=P(Z&lt;-2.05)=0.0202\)</span></p>
+<p>(ii) P-value=<span class="math inline">\(P(Z&gt;-1.84)=P(Z&lt;1.84)=0.9671\)</span></p>
+<p>(iii) P-value=<span class="math inline">\(P(Z&gt;0.4)=P(Z&lt;-0.4)=0.3446\)</span></p>
+<p><strong>Problem 7.5 (b)</strong> For the hypothesis test H0: μ = 5 against H1: μ &lt;5 and variance known, calculate the P-value for each of the following test statistics. (i) <span class="math inline">\(z_0 = 2.05\)</span> (ii) <span class="math inline">\(z_0 = - 1.84\)</span> (iii) <span class="math inline">\(z_0 = 0.4\)</span></p>
+<p><u>Solution 7.5 (b):</u> Since this is an lower-tailed test so</p>
+<p>(i) P-value=<span class="math inline">\(P(Z&lt;2.05)=0.9798\)</span>.</p>
+<p>(ii) P-value=<span class="math inline">\(P(Z&lt;-1.84)=0.03288\)</span>.</p>
+<p>(iii) do it yourself.</p>
+<p><strong>Problem 7.5 (c)</strong> For the hypothesis test H0:μ = 7 against H1: μ ≠ 7 and variance known, calculate the P-value for each of the following test statistics.</p>
+<ol type="i">
+<li><span class="math inline">\(z_0 = 2.05\)</span> (ii) <span class="math inline">\(z_0 = - 1.84\)</span> (iii) <span class="math inline">\(z_0 = 0.4\)</span></li>
+</ol>
+<p><u>Solution 7.5 (c):</u> Since this is an two-tailed test so</p>
+<p>(i) P-value=<span class="math inline">\(P(Z&gt;2.05)+P(Z&lt;-2.05)=2P(Z&lt;-2.05)=0.0404\)</span>.</p>
+<p>(ii) P-value=<span class="math inline">\(P(Z&lt;-1.84)+P(Z&gt;1.84)=2P(Z&lt;-1.84)=0.0658\)</span>.</p>
+<p>(iii) do it yourself.</p>
+<p><strong>Problem 7.6</strong> The life in hours of a battery is known to be approximately normally distributed with standard deviation <span class="math inline">\(\sigma=\)</span> 1.25 hours. A random sample of 10 batteries has a mean life of <span class="math inline">\(\bar x=\)</span> 40.5 hours. <strong>Conduct</strong> a hypothesis test to justify the claim that battery life exceeds 40 hours.</p>
+<p><strong>Problem 7.7</strong> A bearing used in an automotive application is supposed to have a nominal inside diameter of 1.5 inches. A random sample of 25 bearings is selected, and the average inside diameter of these bearings is 1.4975 inches. Bearing diameter is known to be normally distributed with standard deviation <span class="math inline">\(\sigma\)</span> = 0.01 inch. <strong>Test</strong> the hypothesis <span class="math inline">\(H_0:\mu = 1.5\)</span> . versus <span class="math inline">\(H_1:\mu \ne 1.5\)</span> using <span class="math inline">\(\alpha = 0.01\)</span>.</p>
+<p><u>Solution 7.7:</u></p>
+<p>Let <span class="math inline">\(X\)</span> be the inside diameter of the bearings (in inches)</p>
+<p><strong>Given</strong>,</p>
+<p>Sample size, <span class="math inline">\(n=25\)</span>;</p>
+<p>Sample mean <span class="math inline">\(\bar x =1.4975\)</span> inches; Population SD, <span class="math inline">\(\sigma =0.01\)</span> inch.</p>
+<p><strong>Hypotheses:</strong></p>
+<p><span class="math display">\[H_0: \mu =1.5\]</span></p>
+<p><span class="math display">\[H_1: \mu \ne 1.5 \ \ (two-tailed)\]</span></p>
+<p><strong>Test statistic:</strong> Since X follows normal distribution and <span class="math inline">\(\sigma\)</span> is known so the test statistic is:</p>
+<p><span class="math display">\[z_0=\frac{\bar x-\mu_0}{\sigma/\sqrt n}=\frac{1.4975-1.5}{0.01/\sqrt 25}=-1.25\]</span></p>
+<p><strong>Critical value:</strong> At <span class="math inline">\(\alpha=0.05\)</span>,</p>
+<p><span class="math display">\[-z_{\alpha/2}=- 1.96\ \ \ and \ \ \  z_{\alpha/2}=1.96\]</span></p>
+<p><strong>Decision:</strong> Since <span class="math inline">\(z_0\)</span> does not fall in critical region so do not reject the <span class="math inline">\(H_0\)</span>.</p>
+<p><strong>Conclusion:</strong> We can conclude the the mean inside diameter of the bearing is 1.5 inches based on thie sample data.</p>
+<p><strong>Problem 7.8</strong> The manufacturer of the X-15 steel-belted radial truck tire claims that the mean mileage the tire can be driven before the tread wears out is 60,000 miles. Assume the mileage wear follows the normal distribution and the standard deviation of the distribution is 5,000 miles. Crosset Truck Company bought 48 tires and found that the mean mileage for its trucks is 59,500 miles. Is Crosset’s experience different from that claimed by the manufacturer at the 0.05 significance level?</p>
+</section>
+<section id="one-sample-t-test" class="level4" data-number="6.3.6.2">
+<h4 data-number="6.3.6.2" class="anchored" data-anchor-id="one-sample-t-test"><span class="header-section-number">6.3.6.2</span> One sample t-test</h4>
+<p>When sampling is from a <strong>normally distributed population</strong> or <strong>sample size is sufficiently large</strong> and t<strong>he population variance is unknown</strong>, the test statistic for testing <span class="math inline">\(H_0: \mu=\mu_0\)</span> at <span class="math inline">\(\alpha\)</span> is</p>
+<p><span class="math display">\[t=\frac{\bar x-\mu_0}{s /\sqrt n}\]</span></p>
+<p>Test statistic <span class="math inline">\(t\)</span> follows a Student’s 𝑡 distribution with <span class="math inline">\((n - 1)\)</span> degrees of freedom.</p>
+<p><strong>Decision (Critical value approach):</strong> If calculated <span class="math inline">\(t\)</span> falls in rejection region (CR) , then reject <span class="math inline">\(H_0\)</span> . Otherwise, do not reject <span class="math inline">\(H_0\)</span>.</p>
+<ul>
+<li><p>For lower tailed test, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(t&lt;-t_\alpha\)</span> ;</p></li>
+<li><p>For upper tailed test, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(t&gt; t_\alpha\)</span> ;</p></li>
+<li><p>For two-tailed test, reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(t&lt;-t_{\alpha/2}\)</span> or <span class="math inline">\(t&gt;t_{\alpha/2}\)</span> .</p></li>
+</ul>
+<p><strong>Problem 10.4</strong> Annual per capita consumption of milk is 21.6 gallons (<em>Statistical Abstract of the United States: 2006</em>). Being from the Midwest, you believe milk consumption is higher there and wish to support your opinion. A sample of 16 individuals from the Midwestern town of Webster City showed a sample mean annual consumption of 24.1 gallons with a standard deviation of <span class="math inline">\(s=4.8\)</span> .</p>
+<p>a) Develop a hypothesis test that can be used to determine whether the mean annual consumption in Webster City is higher than the national mean.</p>
+<p>b) Test the hypothesis at <span class="math inline">\(\alpha=0.05\)</span> .</p>
+<p>c) Draw a conclusion.</p>
+<p><strong>Problem 10.5</strong> The mean length of a small counterbalance bar is 43 millimeters. The production supervisor is concerned that the adjustments of the machine producing the bars have changed. He asks the Engineering Department to investigate. Engineer selects a random sample of 10 bars and measures each. The results are reported below in millimeters.</p>
+<p>42, 39, 42, 45, 43, 40, 39, 41, 40, 42</p>
+<p>Is it reasonable to conclude that there has been a change in the mean length of the bars?</p>
+</section>
+</section>
+<section id="normality-test" class="level3" data-number="6.3.7">
+<h3 data-number="6.3.7" class="anchored" data-anchor-id="normality-test"><span class="header-section-number">6.3.7</span> Normality test</h3>
+<p>In parametric (distribution based ) hypothesis test the checking normality assumption of study variable is a common practice especially when the sample size is small (<span class="math inline">\(n&lt;30\)</span>). For large samples, the <strong>Central Limit Theorem (CLT)</strong> often makes this test robust to non-normality.</p>
+<p>The normality assumption is checked in two ways:</p>
+<p>a) Graphically</p>
+<p>b) Numerically using some normality tests</p>
+<p><strong>a) Graphical procedure to check normality</strong></p>
+<p>We often plot the data (i.e., histogram, density plot, boxplot) to explore so called bell-shaped of the data. But the most popular and effective way to check normality is <strong>Q-Q plot (Quantile- Quantile plot).</strong></p>
+<p><strong>b) Normality test</strong></p>
+<p>A number of normality tests are available; of them a common test is <strong>Shapiro-Wilk</strong> test of normality suitable for small to medium sample size (3 to 5000) <span class="citation" data-cites="shapiro1965analysis Royston">(<a href="references.html#ref-shapiro1965analysis" role="doc-biblioref">Shapiro and Wilk 1965</a>; <a href="references.html#ref-Royston" role="doc-biblioref">Royston 1982</a>)</span>.</p>
+<p><strong>Shapiro-Wilk Test Statistic W</strong></p>
+<p><span class="math display">\[W=\frac{(\sum_{i=1}^n a_i x_{(i)})^2}{\sum_{i=1}^n (x_i-\bar x)^2}\]</span></p>
+<p>Where,</p>
+<ul>
+<li><p><span class="math inline">\(x_{(i)}\)</span> : the <span class="math inline">\(i^{th}\)</span> <strong>order statistic</strong> (i.e., the <em>i</em>-th smallest value in the sample)</p></li>
+<li><p><span class="math inline">\(\bar x\)</span>: the <strong>sample mean</strong></p></li>
+<li><p><span class="math inline">\(a_i\)</span> : constants calculated based on the <strong>expected values and variances</strong> of order statistics from a <strong>standard normal distribution (</strong>Tabulated in Shapiro Wilk Table)</p></li>
+<li><p><span class="math inline">\(n\)</span>: sample size</p></li>
+</ul>
+<p><strong>Hypotheses:</strong></p>
+<ul>
+<li><p><strong>Null Hypothesis</strong> <span class="math inline">\(H_0\)</span>: The data are <strong>normally distributed</strong>.</p></li>
+<li><p><strong>Alternative</strong> <span class="math inline">\(H_1\)</span>: The data are <strong>not normally distributed</strong>.</p></li>
+</ul>
+<p>We reject <span class="math inline">\(H_0\)</span> if the <strong>p-value</strong> is less than our significance level (e.g., 0.05).</p>
+<p>Almost all statistical software and package routinely provide the <strong>Shapiro-Wilk</strong> test.</p>
+<p>In <strong>R</strong> Shapiro-Wilk test is available as <code>shapiro.test</code> .</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  uniform.data
+W = 0.93903, p-value = 0.0001683</code></pre>
+</div>
+</div>
+<p>The p-value&lt;0.05 implies (reject <span class="math inline">\(H_0\)</span>) that the data is not normally distributed.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  normal.data
+W = 0.99212, p-value = 0.83</code></pre>
+</div>
+</div>
+<p>The p-value&gt;0.05 implies (do not reject <span class="math inline">\(H_0\)</span>) that the data is normally distributed.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-baron2019" class="csl-entry" role="listitem">
+Baron, Michael. 2019. <em>Probability and statistics for computer scientists</em>. Third edition. A Chapman &amp; Hall book. Boca Raton: London.
+</div>
+<div id="ref-montgomery2014" class="csl-entry" role="listitem">
+Montgomery, Douglas C., and George C. Runger. 2014. <em>Applied Statistics and Probability for Engineers</em>. Sixth edition. Hoboken, NJ: John Wiley; Sons, Inc.
+</div>
+<div id="ref-Royston" class="csl-entry" role="listitem">
+Royston, J. P. 1982. <span>“Algorithm AS 181: The w Test for Normality.”</span> <em>Journal of the Royal Statistical Society. Series C (Applied Statistics)</em> 31 (2): 176–80. <a href="http://www.jstor.org/stable/2347986">http://www.jstor.org/stable/2347986</a>.
+</div>
+<div id="ref-shapiro1965analysis" class="csl-entry" role="listitem">
+Shapiro, Samuel Sanford, and Martin B Wilk. 1965. <span>“An Analysis of Variance Test for Normality (Complete Samples).”</span> <em>Biometrika</em> 52 (3-4): 591–611.
+</div>
+<div id="ref-walpole2017" class="csl-entry" role="listitem">
+Walpole, Ronald E., Raymond H. Myers, Sharon L. Myers, and Keying Ye. 2017. <em>Probability &amp; statistics for engineers &amp; scientists: MyStatLab update</em>. Ninth edition. Boston: Pearson.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./5joint_distribution.html" class="pagination-link" aria-label="Joint Probability Distributions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Joint Probability Distributions</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./7Linear_regression.html" class="pagination-link" aria-label="Simple Linear Regression and Correlation">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Simple Linear Regression and Correlation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
